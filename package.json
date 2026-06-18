@@ -1,0 +1,19 @@
+{
+  "name": "rodrigo-parente-advogados",
+  "version": "1.0.0",
+  "description": "Site institucional do escritório Rodrigo Parente Advogados Especializados",
+  "main": "build.js",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "npx -y live-server --port=8080 --no-browser"
+  },
+  "keywords": [
+    "advocacia",
+    "rodrigo",
+    "parente",
+    "site",
+    "institucional"
+  ],
+  "author": "Antigravity",
+  "license": "ISC"
+}
