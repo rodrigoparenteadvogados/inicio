@@ -1,4 +1,4 @@
-﻿// Banco de dados rico
+// Banco de dados rico
 const areas = 
 [   {
     id: 'direito-administrativo',
@@ -690,12 +690,18 @@ const areas =
       }
     ],
 "demandas": [
-      'Ação revisional judicial de financiamentos de veículos e caminhões',
-      'Defesas em ações judiciais de busca e apreensão de bens',
-      'Ação civil indenizatória por fraudes de Pix e sequestros de saldos',
-      'Embargos a ações de execução de Cédulas de Crédito Bancário',
-      'Renegociação e alongamento de dívidas rurais e empresariais',
-      'Exclusão de tarifas bancárias abusivas e taxas ilegais de conta'
+      'Superendividamento',
+      'Revisão de Juros Abusivos em Empréstimos Consignados de Servidores Públicos Concursados (Educação, Saúde e Segurança Pública)',
+      'Revisão de Juros Abusivos Realizados por Funcionários Celetistas (CLT)',
+      'Dívidas Bancárias Abusivas Realizadas por Aposentados e Pensionistas',
+      'Dívidas Abusivas Relacionadas a Grandes Bancos (Banco do Brasil, Bradesco, Itaú, Santander, Nubank, C6 Bank)',
+      'Repactuação de Dívidas e Elaboração de Planos de Pagamento',
+      'Defesa de Ação Judicial de Cobrança de Empréstimos Realizados por Empresas e Microempresários',
+      'Negociação e Defesa de Contratos de PRONAMPE',
+      'Juros Abusivos em Financiamentos Habitacionais e de Veículos',
+      'Defesas em Ações Judiciais de Busca e Apreensão de Bens',
+      'Audiências Judiciais de Acordos Bancários',
+      'Ação civil indenizatória por fraudes de Pix e golpes eletrônicos'
     ],
 "cenarios": [
       {
@@ -1621,4 +1627,47 @@ const areas =
     ]
   }
 ];
+// ReordenaÃ§Ã£o e renomeaÃ§Ã£o de Direito Penal para Direito Criminal
+const desiredOrderIds = [
+  'direito-bancario',
+  'direito-consumidor',
+  'direito-penal',
+  'direito-familia-sucessoes',
+  'direito-administrativo',
+  'direito-tributario',
+  'direito-societario-empresarial',
+  'direito-civel',
+  'direito-trabalhista',
+  'direito-eleitoral',
+  'direito-digital',
+  'contratos',
+  'compliance',
+  'improbidade-administrativa',
+  'recuperacao-judicial',
+  'direito-previdenciario',
+  'direito-imobiliario',
+  'direito-notarial-registral',
+  'direito-canabico',
+  'direito-jogos-apostas',
+  'direito-desportivo'
+];
+
+for (const a of areas) {
+  if (a.id === 'direito-penal') {
+    a.title = 'Direito Criminal';
+  }
+}
+
+const reorderedAreas = [];
+for (const id of desiredOrderIds) {
+  const found = areas.find(a => a.id === id);
+  if (found) {
+    reorderedAreas.push(found);
+  }
+}
+
+// Substitui os itens de areas pelos ordenados
+areas.length = 0;
+areas.push(...reorderedAreas);
+
 module.exports = areas;

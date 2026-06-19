@@ -118,24 +118,22 @@ function renderTeamCards(limit = null) {
     },
     {
       name: "Dr. Johnathan Marques",
-      role: "Bacharel & Economista (UFC)",
-      oab: "Graduando em Direito / Economista",
+      role: "Corpo Jurídico",
+      oab: "Economista & Graduando em Direito",
       isStudent: true,
       bio: `
         <h3 class="bio-title">Dr. Johnathan Marques</h3>
-        <p class="bio-subtitle">Equipe do Escritório / Economista</p>
+        <p class="bio-subtitle">Corpo Jurídico / Economista</p>
         <div class="bio-text">
-          <p>Economista formado na Universidade Federal do Ceará. Renomado Economista.</p>
-          <p>Graduando em Direito.</p>
-          <p>Experiência profissional extremamente competente e preparado.</p>
+          <p>Economista formado pela Universidade Federal do Ceará UFC e Graduando em Direito pelo Centro Universitário Uninta Ceará. Responsável pelo processo de Superendividamento.</p>
           
           <ul class="bio-highlights">
-            <li><span>🌐</span> Estudioso do processo de Superendividamento da sociedade</li>
-            <li><span>🌐</span> Estudos aprofundados em avaliação de juros Abusivos</li>
-            <li><span>🌐</span> Estudo aprofundados na avaliação do comportamento dos Bancos sobre Taxas de Juros</li>
-            <li><span>🌐</span> Mentor de Jovens Economistas</li>
-            <li><span>🌐</span> Estudioso no Âmbito do Direito Constitucional, Direito Empresarial, Direito do Consumidor e Direito Societário</li>
+            <li><span>🌐</span> Estudos aprofundados em avaliação de juros Abusivos e empréstimos consignados</li>
+            <li><span>🌐</span> Estudos aprofundados na avaliação do comportamento dos Bancos sobre Taxas de Juros</li>
+            <li><span>🌐</span> Mentor de Jovens Economistas, Advogados e Estagiários</li>
+            <li><span>🌐</span> Estudioso no Âmbito do Direito Constitucional, Direito Empresarial, Direito do Consumidor, Direito Societário, Criminal e Bancário</li>
             <li><span>🌐</span> Estudioso do processo de aperfeiçoamento para Defesa de Empresas e Empresários no processo de repactuação de Dívidas</li>
+            <li><span>🌐</span> Experiência profissional competente e preparada</li>
           </ul>
         </div>
       `

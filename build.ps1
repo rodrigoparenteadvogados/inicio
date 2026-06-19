@@ -702,12 +702,18 @@ $areas = @(
         }
       )
       demandas = @(
-        'Ação revisional judicial de financiamentos de veículos e caminhões',
-        'Defesas em ações judiciais de busca e apreensão de bens',
-        'Ação civil indenizatória por fraudes de Pix e sequestros de saldos',
-        'Embargos a ações de execução de Cédulas de Crédito Bancário',
-        'Renegociação e alongamento de dívidas rurais e empresariais',
-        'Exclusão de tarifas bancárias abusivas e taxas ilegais de conta'
+        'Superendividamento',
+        'Revisão de Juros Abusivos em Empréstimos Consignados de Servidores Públicos Concursados (Educação, Saúde e Segurança Pública)',
+        'Revisão de Juros Abusivos Realizados por Funcionários Celetistas (CLT)',
+        'Dívidas Bancárias Abusivas Realizadas por Aposentados e Pensionistas',
+        'Dívidas Abusivas Relacionadas a Grandes Bancos (Banco do Brasil, Bradesco, Itaú, Santander, Nubank, C6 Bank)',
+        'Repactuação de Dívidas e Elaboração de Planos de Pagamento',
+        'Defesa de Ação Judicial de Cobrança de Empréstimos Realizados por Empresas e Microempresários',
+        'Negociação e Defesa de Contratos de PRONAMPE',
+        'Juros Abusivos em Financiamentos Habitacionais e de Veículos',
+        'Defesas em Ações Judiciais de Busca e Apreensão de Bens',
+        'Audiências Judiciais de Acordos Bancários',
+        'Ação civil indenizatória por fraudes de Pix e golpes eletrônicos'
       )
       cenarios = @(
         @{
@@ -1634,6 +1640,48 @@ $areas = @(
     }
 )
 
+# Reordenação e renomeação de Direito Penal para Direito Criminal
+$desiredOrderIds = @(
+  'direito-bancario',
+  'direito-consumidor',
+  'direito-penal',
+  'direito-familia-sucessoes',
+  'direito-administrativo',
+  'direito-tributario',
+  'direito-societario-empresarial',
+  'direito-civel',
+  'direito-trabalhista',
+  'direito-eleitoral',
+  'direito-digital',
+  'contratos',
+  'compliance',
+  'improbidade-administrativa',
+  'recuperacao-judicial',
+  'direito-previdenciario',
+  'direito-imobiliario',
+  'direito-notarial-registral',
+  'direito-canabico',
+  'direito-jogos-apostas',
+  'direito-desportivo'
+)
+
+foreach ($a in $areas) {
+  if ($a.id -eq 'direito-penal') {
+    $a.title = 'Direito Criminal'
+  }
+}
+
+$reorderedAreas = @()
+foreach ($id in $desiredOrderIds) {
+  foreach ($a in $areas) {
+    if ($a.id -eq $id) {
+      $reorderedAreas += $a
+      break
+    }
+  }
+}
+$areas = $reorderedAreas
+
 # 3. Definição do Banco de Dados de Páginas e Metadados
 $pages = @(
   @{ filename = "index.html"; layout = "home"; title = "Advocacia Estratégica no Ceará | Rodrigo Parente Advogados"; metaDescription = "Escritório de advocacia com atuação consultiva, administrativa e judicial em Fortaleza e Sobral/CE. Mais de 20 anos de experiência jurídica de excelência."; h1 = "Advocacia Estratégica e Assessoria Jurídica Especializada no Ceará"; breadcrumbs = @() },
@@ -1785,23 +1833,21 @@ function Render-TeamCards($limit = $null) {
     },
     @{
       name = "Dr. Johnathan Marques"
-      role = "Bacharel & Economista (UFC)"
-      oab = "Graduando em Direito / Economista"
+      role = "Corpo Jurídico"
+      oab = "Economista & Graduando em Direito"
       bio = '
         <h3 class="bio-title">Dr. Johnathan Marques</h3>
-        <p class="bio-subtitle">Equipe do Escritório / Economista</p>
+        <p class="bio-subtitle">Corpo Jurídico / Economista</p>
         <div class="bio-text">
-          <p>Economista formado na Universidade Federal do Ceará. Renomado Economista.</p>
-          <p>Graduando em Direito.</p>
-          <p>Experiência profissional extremamente competente e preparado.</p>
+          <p>Economista formado pela Universidade Federal do Ceará UFC e Graduando em Direito pelo Centro Universitário Uninta Ceará. Responsável pelo processo de Superendividamento.</p>
           
           <ul class="bio-highlights">
-            <li><span>🌐</span> Estudioso do processo de Superendividamento da sociedade</li>
-            <li><span>🌐</span> Estudos aprofundados em avaliação de juros Abusivos</li>
-            <li><span>🌐</span> Estudo aprofundados na avaliação do comportamento dos Bancos sobre Taxas de Juros</li>
-            <li><span>🌐</span> Mentor de Jovens Economistas</li>
-            <li><span>🌐</span> Estudioso no Âmbito do Direito Constitucional, Direito Empresarial, Direito do Consumidor e Direito Societário</li>
+            <li><span>🌐</span> Estudos aprofundados em avaliação de juros Abusivos e empréstimos consignados</li>
+            <li><span>🌐</span> Estudos aprofundados na avaliação do comportamento dos Bancos sobre Taxas de Juros</li>
+            <li><span>🌐</span> Mentor de Jovens Economistas, Advogados e Estagiários</li>
+            <li><span>🌐</span> Estudioso no Âmbito do Direito Constitucional, Direito Empresarial, Direito do Consumidor, Direito Societário, Criminal e Bancário</li>
             <li><span>🌐</span> Estudioso do processo de aperfeiçoamento para Defesa de Empresas e Empresários no processo de repactuação de Dívidas</li>
+            <li><span>🌐</span> Experiência profissional competente e preparada</li>
           </ul>
         </div>
       '
@@ -2411,8 +2457,8 @@ foreach ($page in $pages) {
         <section class="hero">
           <div class="container hero-content">
             <span class="hero-tagline">Mais de 20 anos de excelência jurídica</span>
-            <h1>Escritório de Advocacia Dr Rodrigo Parente Advogados Especializados</h1>
-            <p class="hero-subtitle">Atuação consultiva, administrativa e judicial para pessoas, empresas e instituições, com atendimento em Sobral, Fortaleza e em todo o território nacional.</p>
+            <h1>Advocacia Estratégica e Assessoria Jurídica Especializada no Brasil</h1>
+            <p class="hero-subtitle">Atuação consultiva, administrativa e judicial para pessoas, empresas e instituições, com atendimento em todo o território nacional.</p>
             <div class="btn-group">
               <a href="https://wa.me/5585992046060" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Fale pelo WhatsApp</a>
               <a href="areas-de-atuacao.html" class="btn btn-outline-white">Conheça nossas áreas de atuação</a>

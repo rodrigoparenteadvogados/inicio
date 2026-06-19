@@ -130,8 +130,8 @@ pages.forEach(page => {
         <section class="hero">
           <div class="container hero-content">
             <span class="hero-tagline">Mais de 20 anos de excelência jurídica</span>
-            <h1>Escritório de Advocacia Dr Rodrigo Parente Advogados Especializados</h1>
-            <p class="hero-subtitle">Atuação consultiva, administrativa e judicial para pessoas, empresas e instituições, com atendimento em Sobral, Fortaleza e em todo o território nacional.</p>
+            <h1>Advocacia Estratégica e Assessoria Jurídica Especializada no Brasil</h1>
+            <p class="hero-subtitle">Atuação consultiva, administrativa e judicial para pessoas, empresas e instituições, com atendimento em todo o território nacional.</p>
             <div class="btn-group">
               <a href="https://wa.me/5585992046060" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Fale pelo WhatsApp</a>
               <a href="areas-de-atuacao.html" class="btn btn-outline-white">Conheça nossas áreas de atuação</a>
