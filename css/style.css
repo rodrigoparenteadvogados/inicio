@@ -534,8 +534,17 @@ p {
   }
   
   .nav-item.dropdown-active .dropdown-menu {
-    max-height: 600px;
+    max-height: 1200px;
     padding: 8px 0 16px 16px;
+  }
+  
+  .dropdown-link {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  
+  .dropdown-link:hover {
+    padding-left: 20px;
   }
   
   .nav-item.dropdown-active .dropdown-trigger svg {
