@@ -478,12 +478,12 @@ p {
 
 @media (max-width: 992px) {
   :root {
-    --header-height: 80px;
+    --header-height: 70px;
   }
 
   .logo-img {
-    height: 60px;
-    margin-left: -10px;
+    height: 50px;
+    margin-left: -12px;
   }
 
   .burger {
