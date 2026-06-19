@@ -130,7 +130,7 @@ pages.forEach(page => {
         <section class="hero">
           <div class="container hero-content">
             <span class="hero-tagline">Mais de 20 anos de excelência jurídica</span>
-            <h1>Advocacia Estratégica e Assessoria Jurídica Especializada no Ceará</h1>
+            <h1>Escritório de Advocacia Dr Rodrigo Parente Advogados Especializados</h1>
             <p class="hero-subtitle">Atuação consultiva, administrativa e judicial para pessoas, empresas e instituições, com atendimento em Sobral, Fortaleza e em todo o território nacional.</p>
             <div class="btn-group">
               <a href="https://wa.me/5585992046060" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Fale pelo WhatsApp</a>
@@ -148,16 +148,26 @@ pages.forEach(page => {
               <p>Com mais de 20 anos de história, nos destacamos pela forma de conduzir as situações apresentadas pelos clientes, pelo profissionalismo na análise de cada demanda e pela elaboração de estratégias jurídicas adequadas a cada caso.</p>
               <p>Nossa atuação equilibra o respeito à tradição e às normas éticas com a agilidade, dinamismo e inovação exigidos pelo cenário corporativo contemporâneo.</p>
               <div style="margin-top: 24px;">
-                <a href="o-escritorio.html" class="btn btn-outline">Conheça nossa história completa</a>
+                <a href="o-escritorio.html" class="btn btn-outline" style="margin-bottom: 20px; display: inline-block;">Conheça nossa história completa</a>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; border-top: 1px solid var(--border-color); padding-top: 20px;">
+                  <li style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background-color: var(--accent-color); color: var(--primary-color); font-weight: bold; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;">1+</span>
+                    <a href="areas-de-atuacao.html" style="color: var(--primary-color); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition-fast);" onmouseover="this.style.borderBottomColor='var(--accent-color)'" onmouseout="this.style.borderBottomColor='transparent'">Conheça nossas áreas de atuação</a>
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background-color: var(--accent-color); color: var(--primary-color); font-weight: bold; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;">2+</span>
+                    <a href="equipe.html" style="color: var(--primary-color); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition-fast);" onmouseover="this.style.borderBottomColor='var(--accent-color)'" onmouseout="this.style.borderBottomColor='transparent'">Conheça nossa equipe de profissionais</a>
+                  </li>
+                </ul>
               </div>
             </div>
             <div style="background-color: var(--primary-color); border-radius: 4px; padding: 40px; color: var(--text-light); text-align: center; border-bottom: 4px solid var(--accent-color);">
               <h3 style="color: var(--text-light); margin-bottom: 16px; font-size: 1.8rem; font-family: var(--font-serif);">Atuação Nacional</h3>
               <p style="color: rgba(248,249,250,0.85); font-size: 0.95rem; margin-bottom: 24px;">Além de nossas sedes físicas no Ceará, dispomos de uma rede de parceiros estratégicos que nos permite oferecer atendimento de excelência em todo o território nacional.</p>
               <ul style="text-align: left; display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; font-size: 0.9rem;">
-                <li style="display: flex; gap: 8px; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="var(--accent-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Atendimento Consultivo e Preventivo</li>
-                <li style="display: flex; gap: 8px; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="var(--accent-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Contencioso Judicial e Administrativo</li>
-                <li style="display: flex; gap: 8px; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="var(--accent-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Relação pautada em Ética e Sigilo</li>
+                <li style="display: flex; gap: 8px; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="var(--accent-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Clientes Satisfeitos em 25 Estados</li>
+                <li style="display: flex; gap: 8px; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="var(--accent-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Equipe de Profissionais altamente Qualificados e Preparados</li>
+                <li style="display: flex; gap: 8px; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="var(--accent-color)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Advogados e Advogadas Especializados em constante processo de Aperfeiçoamento</li>
               </ul>
               <a href="contato.html" class="btn btn-accent" style="width: 100%;">Falar com um Advogado</a>
             </div>

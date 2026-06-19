@@ -50,32 +50,95 @@ function renderAreaCards(areas, limit = null) {
   `).join('');
 }
 
-// 4. Gera os cards da equipe
 function renderTeamCards(limit = null) {
   const team = [
     {
       name: "Dr. Rodrigo Parente",
       role: "Advogado e Proprietário",
       oab: "OAB/CE 38.940",
-      isStudent: false
+      isStudent: false,
+      bio: `
+        <h3 class="bio-title">Dr. Rodrigo Parente Bezerra</h3>
+        <p class="bio-subtitle">Proprietário do Escritório</p>
+        <div class="bio-text">
+          <p>Com vasta experiência jurídica. Proprietário do Escritório.</p>
+          <p><strong>Palestrante:</strong> Realiza palestras nos principais simpósios de debates jurídicos do País.</p>
+          <p><strong>Escritor:</strong> Escreve para os principais Jornais e Revistas do País.</p>
+          <p><strong>Professor:</strong> Professor das principais universidades do País.</p>
+          <p><strong>Mentor:</strong> Responsável pelo programa de mentoria para Jovens Advogados.</p>
+          <p><strong>Clientes:</strong> Clientes Satisfeitos em 25 Estados.</p>
+          
+          <ul class="bio-highlights">
+            <li><span>🌐</span> Dr. Rodrigo Parente é um Profissional altamente Qualificado e preparado com participação nos principais simpósios jurídicos do País</li>
+            <li><span>🌐</span> Advogado com amplo conhecimento jurídico em Direito Constitucional, Direito Civil e Processo Civil, Direito Bancário, Direito de Família, Direito Contratual e Direito Empresarial</li>
+            <li><span>🌐</span> Profissional extremamente competente e preparado em constante processo de Aperfeiçoamento</li>
+            <li><span>🌐</span> Presente nos debates jurídicos em Rádios e Revistas</li>
+            <li><span>🌐</span> Profissional extremamente competente e preparado com ampla participação nas reuniões da Ordem dos Advogados do Brasil</li>
+            <li><span>🌐</span> Estudioso de teses inovadoras e contemporâneas no Âmbito do Direito Constitucional, Direito Empresarial, Direito Bancário, Direito do Consumidor e Direito de Família</li>
+          </ul>
+        </div>
+      `
     },
     {
       name: "Dra. Laura Grangeiro",
       role: "Advogada Associada",
       oab: "OAB/CE 32.465",
-      isStudent: false
+      isStudent: false,
+      bio: `
+        <h3 class="bio-title">Dra. Laura Grangeiro</h3>
+        <p class="bio-subtitle">Equipe do Escritório</p>
+        <div class="bio-text">
+          <p>Advogada com vasta experiência jurídica.</p>
+          <p>Especializada em diversas áreas do conhecimento jurídico.</p>
+          <ul class="bio-highlights">
+            <li><span>🌐</span> Advogada extremamente competente e preparada com vasta experiência em Soluções Jurídicas Inovadoras</li>
+            <li><span>🌐</span> Profissional extremamente competente e preparada</li>
+          </ul>
+        </div>
+      `
     },
     {
-      name: "Dra. Eveli Rodrigues",
+      name: "Dra. Evelin Rodrigues",
       role: "Advogada Associada",
       oab: "OAB/CE 54.390",
-      isStudent: false
+      isStudent: false,
+      bio: `
+        <h3 class="bio-title">Dra. Evelin Rodrigues</h3>
+        <p class="bio-subtitle">Equipe do Escritório</p>
+        <div class="bio-text">
+          <p>Advogada com vasta Experiência Jurídica.</p>
+          <p>Com diversas Especializações.</p>
+          <ul class="bio-highlights">
+            <li><span>🌐</span> Profissional extremamente competente e preparada</li>
+            <li><span>🌐</span> Presente nos principais simpósios jurídicos</li>
+            <li><span>🌐</span> Escritora de Artigos Jurídicos</li>
+          </ul>
+        </div>
+      `
     },
     {
       name: "Dr. Johnathan Marques",
       role: "Bacharel & Economista (UFC)",
       oab: "Graduando em Direito / Economista",
-      isStudent: true
+      isStudent: true,
+      bio: `
+        <h3 class="bio-title">Dr. Johnathan Marques</h3>
+        <p class="bio-subtitle">Equipe do Escritório / Economista</p>
+        <div class="bio-text">
+          <p>Economista formado na Universidade Federal do Ceará. Renomado Economista.</p>
+          <p>Graduando em Direito.</p>
+          <p>Experiência profissional extremamente competente e preparado.</p>
+          
+          <ul class="bio-highlights">
+            <li><span>🌐</span> Estudioso do processo de Superendividamento da sociedade</li>
+            <li><span>🌐</span> Estudos aprofundados em avaliação de juros Abusivos</li>
+            <li><span>🌐</span> Estudo aprofundados na avaliação do comportamento dos Bancos sobre Taxas de Juros</li>
+            <li><span>🌐</span> Mentor de Jovens Economistas</li>
+            <li><span>🌐</span> Estudioso no Âmbito do Direito Constitucional, Direito Empresarial, Direito do Consumidor e Direito Societário</li>
+            <li><span>🌐</span> Estudioso do processo de aperfeiçoamento para Defesa de Empresas e Empresários no processo de repactuação de Dívidas</li>
+          </ul>
+        </div>
+      `
     },
     {
       name: "Dr. Paiva Oliveira",
@@ -92,8 +155,10 @@ function renderTeamCards(limit = null) {
   ];
 
   const list = limit ? team.slice(0, limit) : team;
-  return list.map(member => `
-    <div class="member-card">
+  return list.map(member => {
+    const hasBio = !!member.bio;
+    return `
+    <div class="member-card" ${hasBio ? 'data-has-bio="true"' : ''}>
       <div class="member-img-wrap">
         <div class="member-placeholder">
           <svg viewBox="0 0 24 24">
@@ -107,8 +172,10 @@ function renderTeamCards(limit = null) {
         <p class="member-role">${member.role}</p>
         <span class="member-oab">${member.oab}</span>
       </div>
+      ${hasBio ? `<div class="member-bio-data" style="display: none;">${member.bio}</div>` : ''}
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 // 5. Gera os cards de Valores

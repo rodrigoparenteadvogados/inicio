@@ -159,4 +159,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  // ==========================================================================
+  // BIOGRAPHY MODAL INTERACTION
+  // ==========================================================================
+  const modal = document.getElementById('bio-modal');
+  if (modal) {
+    const modalContent = modal.querySelector('.modal-content');
+    const modalClose = modal.querySelector('.modal-close');
+    const modalOverlay = modal.querySelector('.modal-overlay');
+    const memberCards = document.querySelectorAll('.member-card[data-has-bio="true"]');
+    
+    if (modalContent && memberCards.length > 0) {
+      memberCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const bioData = card.querySelector('.member-bio-data');
+          if (bioData) {
+            modalContent.innerHTML = bioData.innerHTML;
+            modal.style.display = 'flex';
+            // Force reflow
+            modal.offsetHeight;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Lock background scroll
+          }
+        });
+      });
+      
+      const closeModal = () => {
+        modal.classList.remove('active');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          modalContent.innerHTML = '';
+          document.body.style.overflow = ''; // Unlock background scroll
+        }, 300);
+      };
+      
+      if (modalClose) modalClose.addEventListener('click', closeModal);
+      if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
+      
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    }
+  }
 });
