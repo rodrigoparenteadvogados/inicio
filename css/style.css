@@ -1847,7 +1847,7 @@ textarea.form-control {
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0,0,0,0.05);
   border: none;
-  background: #0b2545; /* Brand primary color for letterboxing */
+  background: transparent;
   height: 560px;
   transition: var(--transition-normal);
 }
