@@ -255,10 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
       updateCarousel();
     }
     
-    // Auto-play wrapping logic (automatically transitions every 5 seconds)
+    // Auto-play wrapping logic (automatically transitions every 3 seconds)
     function startAutoPlay() {
       stopAutoPlay();
-      autoPlayInterval = setInterval(nextSlide, 5000);
+      autoPlayInterval = setInterval(nextSlide, 3000);
     }
     
     function stopAutoPlay() {
