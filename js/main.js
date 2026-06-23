@@ -146,16 +146,27 @@ document.addEventListener('DOMContentLoaded', () => {
   // ACTIVE NAV ITEM ON SCROLL / LOCATION
   // ==========================================================================
   const currentPath = window.location.pathname;
-  const pageName = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+  let pageName = currentPath.substring(currentPath.lastIndexOf('/') + 1);
+  if (!pageName || pageName === 'index.html' || pageName === 'index') {
+    pageName = 'index';
+  } else {
+    pageName = pageName.replace('.html', '');
+  }
   
   document.querySelectorAll('.nav-item').forEach(item => {
     const link = item.querySelector('.nav-link');
     if (link) {
-      const href = link.getAttribute('href');
-      if (href === pageName) {
-        item.classList.add('active');
-      } else {
-        item.classList.remove('active');
+      let href = link.getAttribute('href');
+      if (href) {
+        let normalizedHref = href.replace('.html', '');
+        if (normalizedHref === './' || normalizedHref === '/' || normalizedHref === '') {
+          normalizedHref = 'index';
+        }
+        if (normalizedHref === pageName) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
       }
     }
   });

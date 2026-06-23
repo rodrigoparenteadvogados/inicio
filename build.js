@@ -608,9 +608,27 @@ pages.forEach(page => {
   // Gera a página completa usando o layout
   const fullHtml = renderLayout(page, innerContent, areas);
   
+  // Remove a extensão .html de links internos para URLs limpas (clean URLs)
+  const cleanHtml = fullHtml.replace(/(href|action)="([^"]+)\.html"/g, (match, attr, val) => {
+    // Se for um link absoluto de outro domínio, mantém intacto
+    if ((val.startsWith('http://') || val.startsWith('https://')) && !val.includes('drrodrigoparente.adv.br')) {
+      return match;
+    }
+    
+    // Normaliza o caminho do link removendo o domínio se houver
+    const pathPart = val.replace('https://drrodrigoparente.adv.br/', '');
+    
+    // Se for index, mapeia para a raiz
+    if (pathPart === 'index') {
+      return val.includes('https://') ? `${attr}="https://drrodrigoparente.adv.br/"` : `${attr}="./"`;
+    }
+    
+    return `${attr}="${val}"`;
+  });
+  
   // Escreve o arquivo na raiz
   const outputPath = path.join(__dirname, page.filename);
-  fs.writeFileSync(outputPath, fullHtml);
+  fs.writeFileSync(outputPath, cleanHtml);
   console.log(`Página gerada com sucesso: ${page.filename}`);
 });
 
@@ -630,12 +648,15 @@ console.log('Ativos estáticos (CSS e JS) copiados com sucesso.');
 // --------------------------------------------------------------------------
 // GERADOR DO SITEMAP.XML
 // --------------------------------------------------------------------------
-const sitemapUrlList = pages.map(p => `  <url>
-    <loc>https://drrodrigoparente.adv.br/${p.filename}</loc>
+const sitemapUrlList = pages.map(p => {
+  const locPath = p.filename === 'index.html' ? '' : p.filename.replace('.html', '');
+  return `  <url>
+    <loc>https://drrodrigoparente.adv.br/${locPath}</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>${p.filename === 'index.html' ? '1.0' : p.layout === 'area-detail' ? '0.8' : '0.6'}</priority>
-  </url>`).join('\n');
+  </url>`;
+}).join('\n');
 
 const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

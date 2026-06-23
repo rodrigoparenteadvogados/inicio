@@ -2967,9 +2967,32 @@ foreach ($page in $pages) {
 
   $fullHtml = Render-Layout $page $innerContent
   
+  # Remove a extensão .html de links internos para URLs limpas (clean URLs)
+  $cleanHtml = [regex]::Replace($fullHtml, '(href|action)="([^"]+)\.html"', {
+    param($m)
+    $attr = $m.Groups[1].Value
+    $val = $m.Groups[2].Value
+    
+    if (($val.StartsWith("http://") -or $val.StartsWith("https://")) -and -not $val.Contains("drrodrigoparente.adv.br")) {
+      return $m.Value
+    }
+    
+    $pathPart = $val.Replace("https://drrodrigoparente.adv.br/", "")
+    
+    if ($pathPart -eq "index") {
+      if ($val.Contains("https://")) {
+        return "$attr=""https://drrodrigoparente.adv.br/"""
+      } else {
+        return "$attr=""./"""
+      }
+    }
+    
+    return "$attr=""$val"""
+  })
+  
   # Salva o arquivo HTML estático em formato UTF8
   $outputPath = Join-Path $PSScriptRoot $page.filename
-  [System.IO.File]::WriteAllText($outputPath, $fullHtml, [System.Text.Encoding]::UTF8)
+  [System.IO.File]::WriteAllText($outputPath, $cleanHtml, [System.Text.Encoding]::UTF8)
   Write-Host "Página gerada com sucesso: $($page.filename)" -ForegroundColor Green
 }
 
@@ -2982,12 +3005,17 @@ Write-Host "Ativos estáticos de CSS e JS copiados para a publicação." -Foregr
 $urlsXML = ""
 foreach ($p in $pages) {
   $priority = "0.6"
-  if ($p.filename -eq "index.html") { $priority = "1.0" }
-  elseif ($p.layout -eq "area-detail") { $priority = "0.8" }
+  $locPath = ""
+  if ($p.filename -eq "index.html") {
+    $priority = "1.0"
+  } else {
+    $locPath = $p.filename.Replace(".html", "")
+    if ($p.layout -eq "area-detail") { $priority = "0.8" }
+  }
   
   $urlsXML += @"
   <url>
-    <loc>https://drrodrigoparente.adv.br/$($p.filename)</loc>
+    <loc>https://drrodrigoparente.adv.br/$locPath</loc>
     <lastmod>2026-06-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>$priority</priority>
