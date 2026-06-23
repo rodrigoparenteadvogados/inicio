@@ -541,6 +541,12 @@ p {
     box-shadow: none;
     transition: max-height 0.4s ease-out;
   }
+
+  .nav-item:hover .dropdown-menu {
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
   
   .nav-item.dropdown-active .dropdown-menu {
     max-height: 1200px;
