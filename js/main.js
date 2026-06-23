@@ -215,4 +215,78 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  // ==========================================================================
+  // GALLERY CAROUSEL CONTROL
+  // ==========================================================================
+  const track = document.querySelector('.gallery-track');
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  
+  if (track && prevBtn && nextBtn) {
+    const cards = Array.from(track.children);
+    let currentIndex = 0;
+    
+    function getVisibleCardsCount() {
+      if (window.innerWidth > 992) return 3;
+      if (window.innerWidth > 600) return 2;
+      return 1;
+    }
+    
+    function getGapSize() {
+      return 24; // matches gap: 24px in CSS
+    }
+    
+    function updateCarousel() {
+      const visibleCards = getVisibleCardsCount();
+      const maxIndex = cards.length - visibleCards;
+      
+      // Garante que o index está dentro dos limites válidos
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+      if (currentIndex < 0) currentIndex = 0;
+      
+      if (cards.length > 0) {
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const gap = getGapSize();
+        const amountToMove = currentIndex * (cardWidth + gap);
+        
+        track.style.transform = `translateX(-${amountToMove}px)`;
+      }
+      
+      // Habilita/desabilita os botões de acordo com o índice
+      prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+      prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+      
+      nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+      nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
+    }
+    
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+      }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      const visibleCards = getVisibleCardsCount();
+      const maxIndex = cards.length - visibleCards;
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+    
+    // Atualiza o carrossel no redimensionamento da janela
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        updateCarousel();
+      }, 100);
+    });
+    
+    // Inicialização
+    updateCarousel();
+  }
 });

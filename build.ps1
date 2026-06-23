@@ -2635,11 +2635,36 @@ foreach ($page in $pages) {
           </div>
         </section>
 
-        <!-- Imagem de Transição -->
-        <section style="padding: 0 0 60px 0;">
+        <!-- Carrossel de Fotos do Escritório -->
+        <section class="office-gallery-section" style="padding: 0 0 80px 0;">
           <div class="container">
-            <div style="border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); border: 1px solid var(--border-color);">
-              <img src="img/escritorio2.webp" alt="Ambiente do Escritório Rodrigo Parente Advogados" style="width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block;">
+            <div class="gallery-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+              <h2 class="section-title-left" style="margin-bottom: 0;">Ambiente do Nosso Escritório</h2>
+              <div class="gallery-nav" style="display: flex; gap: 12px;">
+                <button class="gallery-btn prev-btn" aria-label="Foto anterior" style="background: var(--primary-color); border: 1px solid var(--border-color); color: var(--accent-color); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="transform: rotate(180deg);"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2z"/></svg>
+                </button>
+                <button class="gallery-btn next-btn" aria-label="Próxima foto" style="background: var(--primary-color); border: 1px solid var(--border-color); color: var(--accent-color); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42 5.43 5.43H5v2z"/></svg>
+                </button>
+              </div>
+            </div>
+            
+            <div class="gallery-carousel-wrapper" style="overflow: hidden; width: 100%;">
+              <div class="gallery-track" style="display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform;">
+                <div class="gallery-card">
+                  <img src="img/escritorio.webp" alt="Recepção do Escritório Rodrigo Parente Advogados">
+                </div>
+                <div class="gallery-card">
+                  <img src="img/escritorio2.webp" alt="Sala de Reuniões do Escritório">
+                </div>
+                <div class="gallery-card">
+                  <img src="img/escritorio3.webp" alt="Estações de Trabalho">
+                </div>
+                <div class="gallery-card">
+                  <img src="img/escritorio4.webp" alt="Fachada e Identidade Visual">
+                </div>
+              </div>
             </div>
           </div>
         </section>
