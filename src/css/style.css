@@ -499,7 +499,7 @@ p {
     background-color: var(--bg-light);
     flex-direction: column;
     align-items: flex-start;
-    padding: 40px 24px;
+    padding: 40px 20px;
     box-shadow: var(--shadow-lg);
     transition: var(--transition-normal);
     overflow-y: auto;
@@ -544,16 +544,19 @@ p {
   
   .nav-item.dropdown-active .dropdown-menu {
     max-height: 1200px;
-    padding: 8px 0 16px 16px;
+    padding: 8px 0 16px 12px;
   }
   
   .dropdown-link {
-    padding: 8px 16px;
+    padding: 8px 12px;
     font-size: 0.9rem;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
   }
   
   .dropdown-link:hover {
-    padding-left: 20px;
+    padding-left: 16px;
   }
   
   .nav-item.dropdown-active .dropdown-trigger svg {
