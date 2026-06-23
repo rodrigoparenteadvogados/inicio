@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // GALLERY CAROUSEL CONTROL
+  // GALLERY CAROUSEL CONTROL (1-BY-1 LARGE SLIDER WITH AUTOPLAY & WRAP-AROUND)
   // ==========================================================================
   const track = document.querySelector('.gallery-track');
   const prevBtn = document.querySelector('.prev-btn');
@@ -226,22 +226,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (track && prevBtn && nextBtn) {
     const cards = Array.from(track.children);
     let currentIndex = 0;
-    
-    function getVisibleCardsCount() {
-      if (window.innerWidth > 992) return 3;
-      if (window.innerWidth > 600) return 2;
-      return 1;
-    }
+    const maxIndex = cards.length - 1;
+    let autoPlayInterval;
     
     function getGapSize() {
       return 24; // matches gap: 24px in CSS
     }
     
     function updateCarousel() {
-      const visibleCards = getVisibleCardsCount();
-      const maxIndex = cards.length - visibleCards;
-      
-      // Garante que o index está dentro dos limites válidos
       if (currentIndex > maxIndex) currentIndex = maxIndex;
       if (currentIndex < 0) currentIndex = 0;
       
@@ -252,32 +244,52 @@ document.addEventListener('DOMContentLoaded', () => {
         
         track.style.transform = `translateX(-${amountToMove}px)`;
       }
-      
-      // Habilita/desabilita os botões de acordo com o índice
-      prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-      prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
-      
-      nextBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
-      nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
+    }
+    
+    function nextSlide() {
+      if (currentIndex < maxIndex) {
+        currentIndex++;
+      } else {
+        currentIndex = 0; // wrap-around to start
+      }
+      updateCarousel();
+    }
+    
+    // Auto-play wrapping logic (automatically transitions every 5 seconds)
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayInterval = setInterval(nextSlide, 5000);
+    }
+    
+    function stopAutoPlay() {
+      if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+      }
     }
     
     prevBtn.addEventListener('click', () => {
       if (currentIndex > 0) {
         currentIndex--;
-        updateCarousel();
+      } else {
+        currentIndex = maxIndex; // wrap-around to end
       }
+      updateCarousel();
+      startAutoPlay(); // reset timer
     });
     
     nextBtn.addEventListener('click', () => {
-      const visibleCards = getVisibleCardsCount();
-      const maxIndex = cards.length - visibleCards;
-      if (currentIndex < maxIndex) {
-        currentIndex++;
-        updateCarousel();
-      }
+      nextSlide();
+      startAutoPlay(); // reset timer
     });
     
-    // Atualiza o carrossel no redimensionamento da janela
+    // Pause autoplay on mouse enter, resume on mouse leave
+    const wrapper = document.querySelector('.gallery-carousel-wrapper');
+    if (wrapper) {
+      wrapper.addEventListener('mouseenter', stopAutoPlay);
+      wrapper.addEventListener('mouseleave', startAutoPlay);
+    }
+    
+    // Handle window resize dynamically
     let resizeTimeout;
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimeout);
@@ -286,7 +298,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 100);
     });
     
-    // Inicialização
+    // Initial load
     updateCarousel();
+    startAutoPlay();
   }
 });

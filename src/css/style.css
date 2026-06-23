@@ -1845,10 +1845,10 @@ textarea.form-control {
   flex: 0 0 100%;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
   border: 1px solid var(--border-color);
   background: var(--card-bg);
-  height: 280px;
+  height: 480px;
   transition: var(--transition-normal);
 }
 
@@ -1861,7 +1861,7 @@ textarea.form-control {
 }
 
 .gallery-card:hover img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .gallery-btn:hover {
@@ -1875,15 +1875,15 @@ textarea.form-control {
   transform: translateY(0);
 }
 
-@media (min-width: 601px) {
+@media (max-width: 992px) {
   .gallery-card {
-    flex: 0 0 calc((100% - 24px) / 2);
+    height: 380px;
   }
 }
 
-@media (min-width: 993px) {
+@media (max-width: 600px) {
   .gallery-card {
-    flex: 0 0 calc((100% - 48px) / 3);
+    height: 280px;
   }
 }
 
