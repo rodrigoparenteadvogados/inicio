@@ -130,7 +130,7 @@ pages.forEach(page => {
         <section class="hero">
           <div class="container hero-content">
             <span class="hero-tagline">Mais de 20 anos de excelência jurídica</span>
-            <h1>Escritório de Advocacia Dr Rodrigo Parente Advogados Especializados</h1>
+            <h1>Escritório de Advocacia<br>Dr Rodrigo Parente<br>Advogados Especializados</h1>
             <p class="hero-subtitle">Assessoria jurídica estratégica nas esferas consultiva, administrativa e judicial para pessoas, empresas e instituições, com atendimento de excelência em todo o território nacional.</p>
             <div class="btn-group">
               <a href="https://wa.me/5585992046060" class="btn btn-accent" target="_blank" rel="noopener noreferrer">Fale pelo WhatsApp</a>
