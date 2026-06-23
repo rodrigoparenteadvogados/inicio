@@ -57,6 +57,7 @@ function renderTeamCards(limit = null) {
       role: "Advogado e Proprietário",
       oab: "OAB/CE 38.940",
       isStudent: false,
+      image: "img/rodrigo.webp",
       bio: `
         <h3 class="bio-title">Dr. Rodrigo Parente Bezerra</h3>
         <p class="bio-subtitle">Proprietário do Escritório</p>
@@ -84,6 +85,7 @@ function renderTeamCards(limit = null) {
       role: "Advogada Associada",
       oab: "OAB/CE 32.465",
       isStudent: false,
+      image: "img/laura.webp",
       bio: `
         <h3 class="bio-title">Dra. Laura Grangeiro</h3>
         <p class="bio-subtitle">Equipe do Escritório</p>
@@ -102,6 +104,7 @@ function renderTeamCards(limit = null) {
       role: "Advogada Associada",
       oab: "OAB/CE 54.390",
       isStudent: false,
+      image: "img/evelin.webp",
       bio: `
         <h3 class="bio-title">Dra. Evelin Rodrigues</h3>
         <p class="bio-subtitle">Equipe do Escritório</p>
@@ -148,22 +151,26 @@ function renderTeamCards(limit = null) {
       name: "Dra. Andreyna Kettlen",
       role: "Assistente Jurídica",
       oab: "Graduanda em Direito",
-      isStudent: true
+      isStudent: true,
+      image: "img/andreyna.webp"
     }
   ];
 
   const list = limit ? team.slice(0, limit) : team;
   return list.map(member => {
     const hasBio = !!member.bio;
-    return `
-    <div class="member-card" ${hasBio ? 'data-has-bio="true"' : ''}>
-      <div class="member-img-wrap">
-        <div class="member-placeholder">
+    const imgHTML = member.image
+      ? `<img src="${member.image}" alt="${member.name}" class="member-img">`
+      : `<div class="member-placeholder">
           <svg viewBox="0 0 24 24">
             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
           </svg>
           <span>Espaço para Foto</span>
-        </div>
+        </div>`;
+    return `
+    <div class="member-card" ${hasBio ? 'data-has-bio="true"' : ''}>
+      <div class="member-img-wrap">
+        ${imgHTML}
       </div>
       <div class="member-info">
         <h3 class="member-name">${member.name}</h3>

@@ -1774,6 +1774,7 @@ function Render-TeamCards($limit = $null) {
       name = "Dr. Rodrigo Parente"
       role = "Advogado e Proprietário"
       oab = "OAB/CE 38.940"
+      image = "img/rodrigo.webp"
       bio = '
         <h3 class="bio-title">Dr. Rodrigo Parente Bezerra</h3>
         <p class="bio-subtitle">Proprietário do Escritório</p>
@@ -1800,6 +1801,7 @@ function Render-TeamCards($limit = $null) {
       name = "Dra. Laura Grangeiro"
       role = "Advogada Associada"
       oab = "OAB/CE 32.465"
+      image = "img/laura.webp"
       bio = '
         <h3 class="bio-title">Dra. Laura Grangeiro</h3>
         <p class="bio-subtitle">Equipe do Escritório</p>
@@ -1817,6 +1819,7 @@ function Render-TeamCards($limit = $null) {
       name = "Dra. Evelin Rodrigues"
       role = "Advogada Associada"
       oab = "OAB/CE 54.390"
+      image = "img/evelin.webp"
       bio = '
         <h3 class="bio-title">Dra. Evelin Rodrigues</h3>
         <p class="bio-subtitle">Equipe do Escritório</p>
@@ -1853,7 +1856,7 @@ function Render-TeamCards($limit = $null) {
       '
     },
     @{ name = "Dr. Paiva Oliveira"; role = "Assistente Jurídico"; oab = "Graduando em Direito" },
-    @{ name = "Dra. Andreyna Kettlen"; role = "Assistente Jurídica"; oab = "Graduanda em Direito" }
+    @{ name = "Dra. Andreyna Kettlen"; role = "Assistente Jurídica"; oab = "Graduanda em Direito"; image = "img/andreyna.webp" }
   )
   
   $html = ""
@@ -1867,15 +1870,19 @@ function Render-TeamCards($limit = $null) {
       $hasBioAttr = 'data-has-bio="true"'
       $bioDiv = "<div class='member-bio-data' style='display: none;'>$($m.bio)</div>"
     }
+    $imgHTML = "<div class='member-placeholder'>
+          <svg viewBox='0 0 24 24'>
+            <path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/>
+          </svg>
+          <span>Espaço para Foto</span>
+        </div>"
+    if ($null -ne $m.image) {
+      $imgHTML = "<img src='$($m.image)' alt='$($m.name)' class='member-img'>"
+    }
     $html += @"
     <div class="member-card" $hasBioAttr>
       <div class="member-img-wrap">
-        <div class="member-placeholder">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-          </svg>
-          <span>Espaço para Foto</span>
-        </div>
+        $imgHTML
       </div>
       <div class="member-info">
         <h3 class="member-name">$($m.name)</h3>
