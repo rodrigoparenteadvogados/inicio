@@ -1843,12 +1843,12 @@ textarea.form-control {
    ========================================================================== */
 .gallery-card {
   flex: 0 0 100%;
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+  border: none;
   background: var(--card-bg);
-  height: 480px;
+  height: 560px;
   transition: var(--transition-normal);
 }
 
@@ -1861,7 +1861,7 @@ textarea.form-control {
 }
 
 .gallery-card:hover img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .gallery-btn:hover {
@@ -1877,13 +1877,13 @@ textarea.form-control {
 
 @media (max-width: 992px) {
   .gallery-card {
-    height: 380px;
+    height: 420px;
   }
 }
 
 @media (max-width: 600px) {
   .gallery-card {
-    height: 280px;
+    height: 300px;
   }
 }
 

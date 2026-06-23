@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let autoPlayInterval;
     
     function getGapSize() {
-      return 24; // matches gap: 24px in CSS
+      return 0; // no gap for full-width layout
     }
     
     function updateCarousel() {

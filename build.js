@@ -306,10 +306,10 @@ pages.forEach(page => {
           </div>
         </section>
 
-        <!-- Carrossel de Fotos do Escritório -->
-        <section class="office-gallery-section" style="padding: 0 0 80px 0;">
-          <div class="container">
-            <div class="gallery-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <!-- Carrossel de Fotos do Escritório (Full Width) -->
+        <section class="office-gallery-section" style="padding: 0 0 80px 0; overflow: hidden;">
+          <div class="container" style="margin-bottom: 20px;">
+            <div class="gallery-header" style="display: flex; justify-content: space-between; align-items: center;">
               <h2 class="section-title-left" style="margin-bottom: 0;">Ambiente do Nosso Escritório</h2>
               <div class="gallery-nav" style="display: flex; gap: 12px;">
                 <button class="gallery-btn prev-btn" aria-label="Foto anterior" style="background: var(--primary-color); border: 1px solid var(--border-color); color: var(--accent-color); width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
@@ -320,21 +320,21 @@ pages.forEach(page => {
                 </button>
               </div>
             </div>
-            
-            <div class="gallery-carousel-wrapper" style="overflow: hidden; width: 100%;">
-              <div class="gallery-track" style="display: flex; gap: 24px; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform;">
-                <div class="gallery-card">
-                  <img src="img/escritorio.webp" alt="Recepção do Escritório Rodrigo Parente Advogados">
-                </div>
-                <div class="gallery-card">
-                  <img src="img/escritorio2.webp" alt="Sala de Reuniões do Escritório">
-                </div>
-                <div class="gallery-card">
-                  <img src="img/escritorio3.webp" alt="Estações de Trabalho">
-                </div>
-                <div class="gallery-card">
-                  <img src="img/escritorio4.webp" alt="Fachada e Identidade Visual">
-                </div>
+          </div>
+          
+          <div class="gallery-carousel-wrapper" style="overflow: hidden; width: 100%;">
+            <div class="gallery-track" style="display: flex; gap: 0; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform;">
+              <div class="gallery-card">
+                <img src="img/escritorio.webp" alt="Recepção do Escritório Rodrigo Parente Advogados">
+              </div>
+              <div class="gallery-card">
+                <img src="img/escritorio2.webp" alt="Sala de Reuniões do Escritório">
+              </div>
+              <div class="gallery-card">
+                <img src="img/escritorio3.webp" alt="Estações de Trabalho">
+              </div>
+              <div class="gallery-card">
+                <img src="img/escritorio4.webp" alt="Fachada e Identidade Visual">
               </div>
             </div>
           </div>
