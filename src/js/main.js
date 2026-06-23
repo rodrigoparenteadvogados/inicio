@@ -217,89 +217,121 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================================
-  // GALLERY CAROUSEL CONTROL (1-BY-1 LARGE SLIDER WITH AUTOPLAY & WRAP-AROUND)
+  // ==========================================================================
+  // GALLERY CAROUSEL CONTROL (SEAMLESS INFINITE LOOP CAROUSEL WITH 2s AUTOPLAY)
   // ==========================================================================
   const track = document.querySelector('.gallery-track');
   const prevBtn = document.querySelector('.prev-btn');
   const nextBtn = document.querySelector('.next-btn');
   
   if (track && prevBtn && nextBtn) {
-    const cards = Array.from(track.children);
-    let currentIndex = 0;
-    const maxIndex = cards.length - 1;
-    let autoPlayInterval;
-    
-    function getGapSize() {
-      return 0; // no gap for full-width layout
-    }
-    
-    function updateCarousel() {
-      if (currentIndex > maxIndex) currentIndex = maxIndex;
-      if (currentIndex < 0) currentIndex = 0;
+    const originalCards = Array.from(track.children);
+    if (originalCards.length > 0) {
+      // 1. Clone elements to create seamless infinite loop
+      const firstClone = originalCards[0].cloneNode(true);
+      const lastClone = originalCards[originalCards.length - 1].cloneNode(true);
       
-      if (cards.length > 0) {
-        const cardWidth = cards[0].getBoundingClientRect().width;
-        const gap = getGapSize();
-        const amountToMove = currentIndex * (cardWidth + gap);
-        
-        track.style.transform = `translateX(-${amountToMove}px)`;
+      firstClone.classList.add('clone');
+      lastClone.classList.add('clone');
+      
+      track.appendChild(firstClone);
+      track.insertBefore(lastClone, originalCards[0]);
+      
+      const cards = Array.from(track.children);
+      let currentIndex = 1; // Start on first original slide
+      let isTransitioning = false;
+      let autoPlayInterval;
+      
+      // Set initial position immediately without transition
+      track.style.transition = 'none';
+      const initialWidth = originalCards[0].getBoundingClientRect().width;
+      track.style.transform = `translateX(-${currentIndex * initialWidth}px)`;
+      // Force reflow
+      track.offsetHeight;
+      
+      function updateCarousel(withTransition = true) {
+        if (cards.length > 0) {
+          const width = cards[0].getBoundingClientRect().width;
+          if (withTransition) {
+            track.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          } else {
+            track.style.transition = 'none';
+          }
+          track.style.transform = `translateX(-${currentIndex * width}px)`;
+        }
       }
-    }
-    
-    function nextSlide() {
-      if (currentIndex < maxIndex) {
+      
+      function nextSlide() {
+        if (isTransitioning) return;
+        isTransitioning = true;
         currentIndex++;
-      } else {
-        currentIndex = 0; // wrap-around to start
+        updateCarousel(true);
       }
-      updateCarousel();
-    }
-    
-    // Auto-play wrapping logic (automatically transitions every 3 seconds)
-    function startAutoPlay() {
-      stopAutoPlay();
-      autoPlayInterval = setInterval(nextSlide, 3000);
-    }
-    
-    function stopAutoPlay() {
-      if (autoPlayInterval) {
-        clearInterval(autoPlayInterval);
-      }
-    }
-    
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
+      
+      function prevSlide() {
+        if (isTransitioning) return;
+        isTransitioning = true;
         currentIndex--;
-      } else {
-        currentIndex = maxIndex; // wrap-around to end
+        updateCarousel(true);
       }
-      updateCarousel();
-      startAutoPlay(); // reset timer
-    });
-    
-    nextBtn.addEventListener('click', () => {
-      nextSlide();
-      startAutoPlay(); // reset timer
-    });
-    
-    // Pause autoplay on mouse enter, resume on mouse leave
-    const wrapper = document.querySelector('.gallery-carousel-wrapper');
-    if (wrapper) {
-      wrapper.addEventListener('mouseenter', stopAutoPlay);
-      wrapper.addEventListener('mouseleave', startAutoPlay);
+      
+      // Listen to transitionend to handle instant jumps at loop boundaries
+      track.addEventListener('transitionend', () => {
+        isTransitioning = false;
+        
+        // If we reach the clone of the first slide, jump back to index 1 (the real first slide)
+        if (currentIndex === cards.length - 1) {
+          currentIndex = 1;
+          updateCarousel(false);
+        }
+        
+        // If we reach the clone of the last slide, jump forward to index cards.length - 2 (the real last slide)
+        if (currentIndex === 0) {
+          currentIndex = cards.length - 2;
+          updateCarousel(false);
+        }
+      });
+      
+      // Auto-play wrapping logic (automatically transitions every 2 seconds)
+      function startAutoPlay() {
+        stopAutoPlay();
+        autoPlayInterval = setInterval(nextSlide, 2000);
+      }
+      
+      function stopAutoPlay() {
+        if (autoPlayInterval) {
+          clearInterval(autoPlayInterval);
+        }
+      }
+      
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        startAutoPlay(); // reset timer
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        startAutoPlay(); // reset timer
+      });
+      
+      // Pause autoplay on mouse enter, resume on mouse leave
+      const wrapper = document.querySelector('.gallery-carousel-wrapper');
+      if (wrapper) {
+        wrapper.addEventListener('mouseenter', stopAutoPlay);
+        wrapper.addEventListener('mouseleave', startAutoPlay);
+      }
+      
+      // Handle window resize dynamically
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          updateCarousel(false);
+        }, 100);
+      });
+      
+      // Initial load
+      startAutoPlay();
     }
-    
-    // Handle window resize dynamically
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        updateCarousel();
-      }, 100);
-    });
-    
-    // Initial load
-    updateCarousel();
-    startAutoPlay();
   }
 });
