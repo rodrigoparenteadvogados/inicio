@@ -2072,8 +2072,8 @@ function Render-ContactForm($areaList) {
   }
   return @"
     <form id="contact-form" class="contact-form" novalidate>
-      <!-- Configuração do Web3Forms para envio de e-mail (Obtenha sua chave gratuita em web3forms.com) -->
-      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+      <!-- Configuração do Formspree para envio de e-mail (Crie seu formulário em formspree.io e insira o ID abaixo) -->
+      <input type="hidden" name="formspree_id" value="YOUR_FORMSPREE_ID_HERE">
       
       <div class="form-row">
         <div class="form-group">

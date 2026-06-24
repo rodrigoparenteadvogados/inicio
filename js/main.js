@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // CONTACT FORM VALIDATION & SUBMISSION (WEB3FORMS)
+  // CONTACT FORM VALIDATION & SUBMISSION (FORMSPREE)
   // ==========================================================================
   const contactForm = document.getElementById('contact-form');
   const formMessage = document.getElementById('form-message');
@@ -114,12 +114,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       
-      // Get Access Key from input
-      const accessKeyInput = contactForm.querySelector('input[name="access_key"]');
-      const accessKey = accessKeyInput ? accessKeyInput.value : "";
+      // Get Formspree ID from input
+      const formspreeIdInput = contactForm.querySelector('input[name="formspree_id"]');
+      const formspreeId = formspreeIdInput ? formspreeIdInput.value : "";
       
-      if (!accessKey || accessKey === "YOUR_ACCESS_KEY_HERE") {
-        showFormMessage('Erro de configuração: Chave de acesso do formulário não configurada.', 'error');
+      if (!formspreeId || formspreeId === "YOUR_FORMSPREE_ID_HERE") {
+        showFormMessage('Erro de configuração: ID do Formspree não configurado.', 'error');
         return;
       }
       
@@ -127,18 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
       showFormMessage('Enviando sua mensagem, por favor aguarde...', 'info');
       
       const formData = {
-        access_key: accessKey,
         name: name,
         email: email,
         whatsapp: whatsapp,
         city: city,
         area: area,
         message: message,
-        subject: "Novo Contato do Site - " + name,
-        from_name: "Site Rodrigo Parente Advogados"
+        _subject: "Novo Contato do Site - " + name
       };
 
-      fetch('https://api.web3forms.com/submit', {
+      fetch('https://formspree.io/f/' + formspreeId, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -148,12 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
       })
       .then(async (response) => {
         let json = await response.json();
-        if (response.status == 200) {
+        if (response.ok) {
           showFormMessage('Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.', 'success');
           contactForm.reset();
         } else {
           console.log(response);
-          showFormMessage(json.message || 'Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.', 'error');
+          showFormMessage(json.error || 'Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.', 'error');
         }
       })
       .catch(error => {
