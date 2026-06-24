@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
-  // CONTACT FORM VALIDATION & SIMULATED SUBMISSION
+  // CONTACT FORM VALIDATION & SUBMISSION (WEB3FORMS)
   // ==========================================================================
   const contactForm = document.getElementById('contact-form');
   const formMessage = document.getElementById('form-message');
@@ -114,9 +114,52 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
       
-      // Show simulated success message
-      showFormMessage('Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.', 'success');
-      contactForm.reset();
+      // Get Access Key from input
+      const accessKeyInput = contactForm.querySelector('input[name="access_key"]');
+      const accessKey = accessKeyInput ? accessKeyInput.value : "";
+      
+      if (!accessKey || accessKey === "YOUR_ACCESS_KEY_HERE") {
+        showFormMessage('Erro de configuração: Chave de acesso do formulário não configurada.', 'error');
+        return;
+      }
+      
+      // Show sending state
+      showFormMessage('Enviando sua mensagem, por favor aguarde...', 'info');
+      
+      const formData = {
+        access_key: accessKey,
+        name: name,
+        email: email,
+        whatsapp: whatsapp,
+        city: city,
+        area: area,
+        message: message,
+        subject: "Novo Contato do Site - " + name,
+        from_name: "Site Rodrigo Parente Advogados"
+      };
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          showFormMessage('Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.', 'success');
+          contactForm.reset();
+        } else {
+          console.log(response);
+          showFormMessage(json.message || 'Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.', 'error');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        showFormMessage('Erro de conexão. Verifique sua internet e tente novamente.', 'error');
+      });
     });
   }
   
@@ -127,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   function showFormMessage(msg, type) {
     if (formMessage) {
+      formMessage.style.display = 'block';
       formMessage.textContent = msg;
       formMessage.className = 'form-message ' + type;
       
@@ -136,7 +180,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Hide error messages after 5 seconds, keep success messages visible
       if (type === 'error') {
         setTimeout(() => {
-          formMessage.style.display = 'none';
+          if (formMessage.className.includes('error')) {
+            formMessage.style.display = 'none';
+          }
         }, 5000);
       }
     }

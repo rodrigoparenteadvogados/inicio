@@ -258,6 +258,9 @@ function renderContactForm(areas) {
   
   return `
     <form id="contact-form" class="contact-form" novalidate>
+      <!-- Configuração do Web3Forms para envio de e-mail (Obtenha sua chave gratuita em web3forms.com) -->
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+      
       <div class="form-row">
         <div class="form-group">
           <label for="form-name" class="form-label">Nome Completo *</label>
