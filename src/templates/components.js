@@ -171,11 +171,17 @@ function renderTeamCards(limit = null) {
     <div class="member-card" ${hasBio ? 'data-has-bio="true"' : ''}>
       <div class="member-img-wrap">
         ${imgHTML}
+        ${hasBio ? `
+        <div class="member-bio-overlay">
+          <span class="btn btn-accent btn-sm">Ver Biografia</span>
+        </div>
+        ` : ''}
       </div>
       <div class="member-info">
         <h3 class="member-name">${member.name}</h3>
         <p class="member-role">${member.role}</p>
         <span class="member-oab">${member.oab}</span>
+        ${hasBio ? `<div class="member-bio-link">Ver Biografia &rarr;</div>` : ''}
       </div>
       ${hasBio ? `<div class="member-bio-data" style="display: none;">${member.bio}</div>` : ''}
     </div>

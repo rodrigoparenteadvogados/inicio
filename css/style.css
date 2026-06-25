@@ -818,6 +818,49 @@ p {
   height: 100%;
   object-fit: cover;
   object-position: center top;
+  transition: var(--transition-normal);
+}
+
+.member-bio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(11, 37, 69, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition-normal);
+  z-index: 2;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .member-card[data-has-bio="true"]:hover .member-bio-overlay {
+    opacity: 1;
+  }
+  
+  .member-card[data-has-bio="true"]:hover .member-img {
+    transform: scale(1.03);
+  }
+}
+
+.member-bio-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  transition: var(--transition-fast);
+  border-bottom: 1px solid transparent;
+}
+
+.member-card:hover .member-bio-link {
+  color: var(--accent-hover);
+  border-bottom-color: var(--accent-hover);
 }
 
 .member-placeholder {

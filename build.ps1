@@ -1879,15 +1879,28 @@ function Render-TeamCards($limit = $null) {
     if ($null -ne $m.image) {
       $imgHTML = "<img src='$($m.image)' alt='$($m.name)' class='member-img'>"
     }
+    $overlayHTML = ""
+    $linkHTML = ""
+    if ($hasBio) {
+      $overlayHTML = @"
+        <div class="member-bio-overlay">
+          <span class="btn btn-accent btn-sm">Ver Biografia</span>
+        </div>
+"@
+      $linkHTML = "<div class='member-bio-link'>Ver Biografia &rarr;</div>"
+    }
+
     $html += @"
     <div class="member-card" $hasBioAttr>
       <div class="member-img-wrap">
         $imgHTML
+        $overlayHTML
       </div>
       <div class="member-info">
         <h3 class="member-name">$($m.name)</h3>
         <p class="member-role">$($m.role)</p>
         <span class="member-oab">$($m.oab)</span>
+        $linkHTML
       </div>
       $bioDiv
     </div>
