@@ -1856,7 +1856,7 @@ function Render-TeamCards($limit = $null) {
       '
     },
     @{ name = "Dr. Paiva Oliveira"; role = "Assistente Jurídico"; oab = "Graduando em Direito" },
-    @{ name = "Dra. Andreyna Kettlen"; role = "Assistente Jurídica"; oab = "Graduanda em Direito"; image = "img/andreyna.webp" }
+    @{ name = "Dra. Ana Laura Braz de Oliveira"; role = "Especializada em Transações Imobiliárias"; oab = ""; image = "img/andreyna.webp" }
   )
   
   $html = ""

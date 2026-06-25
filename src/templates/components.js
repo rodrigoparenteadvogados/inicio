@@ -148,10 +148,10 @@ function renderTeamCards(limit = null) {
       isStudent: true
     },
     {
-      name: "Dra. Andreyna Kettlen",
-      role: "Assistente Jurídica",
-      oab: "Graduanda em Direito",
-      isStudent: true,
+      name: "Dra. Ana Laura Braz de Oliveira",
+      role: "Especializada em Transações Imobiliárias",
+      oab: "",
+      isStudent: false,
       image: "img/andreyna.webp"
     }
   ];
