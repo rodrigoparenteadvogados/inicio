@@ -219,6 +219,7 @@ p {
   box-shadow: var(--shadow-sm);
   text-transform: uppercase;
   font-size: 0.85rem;
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -352,7 +353,7 @@ p {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: clamp(12px, 2vw, 28px);
   height: 100%;
 }
 
@@ -369,6 +370,7 @@ p {
   color: var(--primary-color);
   position: relative;
   padding: 8px 0;
+  white-space: nowrap;
 }
 
 .nav-link::after {
