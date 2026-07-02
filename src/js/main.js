@@ -470,3 +470,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+// Force build trigger: 2026-07-02
