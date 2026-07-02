@@ -1689,6 +1689,7 @@ $pages = @(
   @{ filename = "areas-de-atuacao.html"; layout = "areas-hub"; title = "Áreas de Atuação Jurídica | Rodrigo Parente Advogados"; metaDescription = "Confira nossas especialidades jurídicas. Oferecemos assessoria consultiva, administrativa e judicial para pessoas físicas, empresas e instituições."; h1 = "Áreas de Atuação Jurídica"; breadcrumbs = @(@{label="Home"; href="index.html"}, @{label="Áreas de Atuação"; href="areas-de-atuacao.html"}) },
   @{ filename = "equipe.html"; layout = "team"; title = "Nossa Equipe Jurídica | Rodrigo Parente Advogados"; metaDescription = "Conheça nosso corpo jurídico multidisciplinar focado em ética, técnica e dedicação aos interesses de nossos clientes em Sobral e Fortaleza."; h1 = "Nossa Equipe"; breadcrumbs = @(@{label="Home"; href="index.html"}, @{label="Equipe"; href="equipe.html"}) },
   @{ filename = "contato.html"; layout = "contact"; title = "Contato | Escritório Rodrigo Parente Advogados"; metaDescription = "Fale com nossa equipe jurídica. Atendimento presencial nas unidades de Sobral e Fortaleza/CE, e atendimento consultivo online nacional."; h1 = "Entre em Contato"; breadcrumbs = @(@{label="Home"; href="index.html"}, @{label="Contato"; href="contato.html"}) },
+  @{ filename = "trabalhe-conosco.html"; layout = "jobs"; title = "Trabalhe Conosco | Rodrigo Parente Advogados"; metaDescription = "Envie seu currículo para fazer parte da equipe de Rodrigo Parente Advogados. Vagas para advogados, estagiários e setor administrativo."; h1 = "Trabalhe Conosco"; breadcrumbs = @(@{label="Home"; href="index.html"}, @{label="Trabalhe Conosco"; href="trabalhe-conosco.html"}) },
   
   # Páginas Legais
   @{ filename = "politica-de-privacidade.html"; layout = "legal"; title = "Política de Privacidade | Rodrigo Parente Advogados"; metaDescription = "Política de privacidade do Escritório de Advocacia Dr. Rodrigo Parente Advogados Especializados em conformidade com a LGPD."; h1 = "Política de Privacidade"; breadcrumbs = @(@{label="Home"; href="index.html"}, @{label="Privacidade"; href="politica-de-privacidade.html"}); legalType = "privacy" },
@@ -2137,6 +2138,57 @@ function Render-ContactForm($areaList) {
 "@
 }
 
+function Render-JobsForm {
+  return @"
+    <form id="job-form" class="contact-form" enctype="multipart/form-data" novalidate>
+      <!-- Configuração do Formspree para envio de e-mail -->
+      <input type="hidden" name="formspree_id" value="YOUR_FORMSPREE_ID_HERE">
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="job-name" class="form-label">Nome Completo *</label>
+          <input type="text" id="job-name" name="name" class="form-control" placeholder="Seu nome completo" required>
+        </div>
+        <div class="form-group">
+          <label for="job-email" class="form-label">E-mail *</label>
+          <input type="email" id="job-email" name="email" class="form-control" placeholder="Seu e-mail" required>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="job-whatsapp" class="form-label">WhatsApp *</label>
+          <input type="tel" id="job-whatsapp" name="whatsapp" class="form-control" placeholder="(85) 99999-9999" required>
+        </div>
+        <div class="form-group">
+          <label for="job-area" class="form-label">Área de Interesse *</label>
+          <select id="job-area" name="area" class="form-control" required>
+            <option value="" disabled selected>Selecione a área</option>
+            <option value="Advogado">Advogado(a)</option>
+            <option value="Estagiário">Estagiário(a)</option>
+            <option value="Administrativo">Setor Administrativo</option>
+            <option value="Outro">Outra Área</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="job-cv" class="form-label">Anexar Currículo (PDF, DOC ou DOCX) *</label>
+        <input type="file" id="job-cv" name="cv" accept=".pdf,.doc,.docx" class="form-control" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="job-message" class="form-label">Mensagem de Apresentação (Opcional)</label>
+        <textarea id="job-message" name="message" class="form-control" placeholder="Fale brevemente sobre sua trajetória ou objetivos profissionais."></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary" style="width:100%;">Enviar Currículo</button>
+      
+      <div id="job-form-message" class="form-message" role="alert"></div>
+    </form>
+"@
+}
+
 # 5. Textos das Páginas Legais
 $legalTexts = @{
   privacy = @"
@@ -2336,6 +2388,7 @@ function Render-Layout($page, $contentHTML) {
             </ul>
           </li>
           <li class="nav-item"><a href="equipe.html" class="nav-link">Equipe</a></li>
+          <li class="nav-item"><a href="trabalhe-conosco.html" class="nav-link">Trabalhe Conosco</a></li>
           <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
           <li class="nav-item nav-cta">
             <a href="https://wa.me/5585992046060" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-sm">Fale Conosco</a>
@@ -2386,6 +2439,7 @@ function Render-Layout($page, $contentHTML) {
           <li><a href="o-escritorio.html" class="footer-link">O Escritório</a></li>
           <li><a href="areas-de-atuacao.html" class="footer-link">Áreas de Atuação</a></li>
           <li><a href="equipe.html" class="footer-link">Equipe</a></li>
+          <li><a href="trabalhe-conosco.html" class="footer-link">Trabalhe Conosco</a></li>
           <li><a href="contato.html" class="footer-link">Contato</a></li>
         </ul>
       </div>
@@ -2421,8 +2475,11 @@ function Render-Layout($page, $contentHTML) {
         <div class="footer-contact-item">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
           <div class="footer-contact-text">
-            <strong>Telefone e E-mail</strong>
-            <span>85 3104-2419</span><br>
+            <strong>Contatos e E-mail</strong>
+            <span>Fixo: (85) 3104-2419</span><br>
+            <span>Fortaleza: <a href="https://wa.me/5585992193636" target="_blank" rel="noopener noreferrer">(85) 99219-3636</a></span><br>
+            <span>Sobral: <a href="https://wa.me/5585992046060" target="_blank" rel="noopener noreferrer">(85) 99204-6060</a></span><br>
+            <span>Plantão: <a href="https://wa.me/5585993652222" target="_blank" rel="noopener noreferrer">(85) 99365-2222</a></span><br>
             <span><a href="mailto:advrodrigoparente2025@gmail.com">advrodrigoparente2025@gmail.com</a></span>
           </div>
         </div>
@@ -2507,6 +2564,17 @@ foreach ($page in $pages) {
                   <li style="display: flex; align-items: center; gap: 10px;">
                     <span style="background-color: var(--accent-color); color: var(--primary-color); font-weight: bold; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;">2+</span>
                     <a href="equipe.html" style="color: var(--primary-color); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition-fast);" onmouseover="this.style.borderBottomColor='var(--accent-color)'" onmouseout="this.style.borderBottomColor='transparent'">Conheça nossa equipe de profissionais</a>
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background-color: var(--accent-color); color: var(--primary-color); font-weight: bold; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;">3+</span>
+                    <a href="contato.html" style="color: var(--primary-color); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition-fast);" onmouseover="this.style.borderBottomColor='var(--accent-color)'" onmouseout="this.style.borderBottomColor='transparent'">Conheça os números de contato do Escritório</a>
+                  </li>
+                  <li style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                    <span style="background-color: var(--accent-color); color: var(--primary-color); font-weight: bold; padding: 2px 8px; border-radius: 4px; font-size: 0.85rem;">4+</span>
+                    <span style="color: var(--primary-color); font-weight: 600;">Conheça o instagram do Escritório:</span>
+                    <a href="https://instagram.com/dr.rodrigo.parente" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition-fast);" onmouseover="this.style.borderBottomColor='var(--accent-color)'" onmouseout="this.style.borderBottomColor='transparent'">@dr.rodrigo.parente</a>
+                    <span style="color: var(--text-muted); font-size: 0.85rem;">|</span>
+                    <a href="https://instagram.com/dr.rodrigo.parenteadvogados" target="_blank" rel="noopener noreferrer" style="color: var(--primary-color); font-weight: 600; text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition-fast);" onmouseover="this.style.borderBottomColor='var(--accent-color)'" onmouseout="this.style.borderBottomColor='transparent'">@dr.rodrigo.parenteadvogados</a>
                   </li>
                 </ul>
               </div>
@@ -2781,7 +2849,7 @@ foreach ($page in $pages) {
                   </div>
                   <div>
                     <h3 class="contact-item-title">Telefone</h3>
-                    <p class="contact-item-value">85 3104-2419</p>
+                    <p class="contact-item-value">(85) 3104-2419</p>
                   </div>
                 </div>
 
@@ -2792,8 +2860,9 @@ foreach ($page in $pages) {
                   <div>
                     <h3 class="contact-item-title">WhatsApp de Contato</h3>
                     <p class="contact-item-value">
-                      <a href="https://wa.me/5585992046060" target="_blank" rel="noopener noreferrer">85 99204-6060 (Unidade Sobral)</a><br>
-                      <a href="https://wa.me/5585992193636" target="_blank" rel="noopener noreferrer">85 99219-3636 (Unidade Fortaleza)</a>
+                      <a href="https://wa.me/5585992193636" target="_blank" rel="noopener noreferrer">(85) 99219-3636 (Unidade Fortaleza)</a><br>
+                      <a href="https://wa.me/5585992046060" target="_blank" rel="noopener noreferrer">(85) 99204-6060 (Unidade Sobral)</a><br>
+                      <a href="https://wa.me/5585993652222" target="_blank" rel="noopener noreferrer">(85) 99365-2222 (Plantão / Geral)</a>
                     </p>
                   </div>
                 </div>
@@ -2871,6 +2940,27 @@ foreach ($page in $pages) {
                   <span>Mapa Interativo Google Maps (Fortaleza/CE)</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+"@
+    }
+    "jobs" {
+      $jobsFormHTML = Render-JobsForm
+      
+      $innerContent = @"
+        <section class="page-header">
+          <div class="container">
+            <h1>$($page.h1)</h1>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container" style="max-width: 800px; margin: 0 auto;">
+            <div class="contact-form-wrap">
+              <h2 style="font-size: 1.6rem; margin-bottom: 8px; color: var(--primary-color);">Envie seu Currículo</h2>
+              <p style="font-size: 0.9rem; margin-bottom: 24px; color: var(--text-muted);">Preencha o formulário abaixo e anexe seu currículo em formato PDF, DOC ou DOCX para se candidatar às vagas do nosso escritório.</p>
+              $jobsFormHTML
             </div>
           </div>
         </section>

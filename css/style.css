@@ -1101,6 +1101,12 @@ textarea.form-control {
   min-height: 120px;
 }
 
+input[type="file"].form-control {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+
 .form-message {
   margin-top: 15px;
   padding: 12px;

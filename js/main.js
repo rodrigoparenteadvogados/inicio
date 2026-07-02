@@ -160,6 +160,97 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // WORK WITH US FORM (TRABALHE CONOSCO)
+  const jobForm = document.getElementById('job-form');
+  const jobFormMessage = document.getElementById('job-form-message');
+  
+  if (jobForm) {
+    jobForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('job-name').value.trim();
+      const email = document.getElementById('job-email').value.trim();
+      const whatsapp = document.getElementById('job-whatsapp').value.trim();
+      const area = document.getElementById('job-area').value;
+      const cvInput = document.getElementById('job-cv');
+      
+      if (!name || !email || !whatsapp || !area || !cvInput.files || cvInput.files.length === 0) {
+        showJobMessage('Por favor, preencha todos os campos obrigatórios e anexe seu currículo.', 'error');
+        return;
+      }
+      
+      if (!validateEmail(email)) {
+        showJobMessage('Por favor, insira um e-mail válido.', 'error');
+        return;
+      }
+      
+      // Check file size and type
+      const file = cvInput.files[0];
+      const allowedTypes = ['.pdf', '.doc', '.docx'];
+      const fileExt = file.name.substring(file.name.lastIndexOf('.')).toLowerCase();
+      if (!allowedTypes.includes(fileExt)) {
+        showJobMessage('Apenas arquivos PDF, DOC ou DOCX são permitidos.', 'error');
+        return;
+      }
+      
+      // 10MB limit
+      if (file.size > 10 * 1024 * 1024) {
+        showJobMessage('O arquivo do currículo não deve ultrapassar 10MB.', 'error');
+        return;
+      }
+      
+      const formspreeIdInput = jobForm.querySelector('input[name="formspree_id"]');
+      const formspreeId = formspreeIdInput ? formspreeIdInput.value : "";
+      
+      if (!formspreeId || formspreeId === "YOUR_FORMSPREE_ID_HERE") {
+        showJobMessage('Erro de configuração: ID do Formspree não configurado.', 'error');
+        return;
+      }
+      
+      showJobMessage('Enviando seu currículo, por favor aguarde...', 'info');
+      
+      // Build FormData for file upload support
+      const formData = new FormData(jobForm);
+      formData.append('_subject', 'Novo Currículo Enviado - ' + name);
+      
+      fetch('https://formspree.io/f/' + formspreeId, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.ok) {
+          showJobMessage('Currículo enviado com sucesso! Agradecemos pelo interesse em fazer parte do nosso escritório.', 'success');
+          jobForm.reset();
+        } else {
+          console.log(response);
+          showJobMessage(json.error || 'Ocorreu um erro ao enviar seu currículo. Tente novamente mais tarde.', 'error');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        showJobMessage('Erro de conexão. Verifique sua internet e tente novamente.', 'error');
+      });
+    });
+  }
+
+  function showJobMessage(msg, type) {
+    if (jobFormMessage) {
+      jobFormMessage.style.display = 'block';
+      jobFormMessage.textContent = msg;
+      jobFormMessage.className = 'form-message ' + type;
+      jobFormMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (type === 'error') {
+        setTimeout(() => {
+          jobFormMessage.style.display = 'none';
+        }, 5000);
+      }
+    }
+  }
   
   function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

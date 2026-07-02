@@ -316,6 +316,58 @@ function renderContactForm(areas) {
   `;
 }
 
+// 9.5. Gera o formulário de Trabalhe Conosco
+function renderJobsForm() {
+  return `
+    <form id="job-form" class="contact-form" enctype="multipart/form-data" novalidate>
+      <!-- Configuração do Formspree para envio de e-mail -->
+      <input type="hidden" name="formspree_id" value="YOUR_FORMSPREE_ID_HERE">
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="job-name" class="form-label">Nome Completo *</label>
+          <input type="text" id="job-name" name="name" class="form-control" placeholder="Seu nome completo" required>
+        </div>
+        <div class="form-group">
+          <label for="job-email" class="form-label">E-mail *</label>
+          <input type="email" id="job-email" name="email" class="form-control" placeholder="Seu e-mail" required>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="job-whatsapp" class="form-label">WhatsApp *</label>
+          <input type="tel" id="job-whatsapp" name="whatsapp" class="form-control" placeholder="(85) 99999-9999" required>
+        </div>
+        <div class="form-group">
+          <label for="job-area" class="form-label">Área de Interesse *</label>
+          <select id="job-area" name="area" class="form-control" required>
+            <option value="" disabled selected>Selecione a área</option>
+            <option value="Advogado">Advogado(a)</option>
+            <option value="Estagiário">Estagiário(a)</option>
+            <option value="Administrativo">Setor Administrativo</option>
+            <option value="Outro">Outra Área</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="job-cv" class="form-label">Anexar Currículo (PDF, DOC ou DOCX) *</label>
+        <input type="file" id="job-cv" name="cv" accept=".pdf,.doc,.docx" class="form-control" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="job-message" class="form-label">Mensagem de Apresentação (Opcional)</label>
+        <textarea id="job-message" name="message" class="form-control" placeholder="Fale brevemente sobre sua trajetória ou objetivos profissionais."></textarea>
+      </div>
+      
+      <button type="submit" class="btn btn-primary btn-block">Enviar Currículo</button>
+      
+      <div id="job-form-message" class="form-message" role="alert"></div>
+    </form>
+  `;
+}
+
 // 10. Gera a lista de cenários comuns de atendimento
 function renderScenarios(cenarios) {
   if (!cenarios || cenarios.length === 0) return '';
