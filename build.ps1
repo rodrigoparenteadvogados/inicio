@@ -2487,7 +2487,7 @@ function Render-Layout($page, $contentHTML) {
     </div>
     
     <div class="container footer-bottom">
-      <p>&copy; 2026 Rodrigo Parente Advogados Especializados. Todos os direitos reservados. Em conformidade com o Código de Ética e Disciplina da OAB.</p>
+      <p>&copy; 2026 Rodrigo Parente Advogados Especializados. Todos os direitos reservados. Em conformidade com o Código de Ética e Disciplina da OAB. | Desenvolvido por <a href="https://cognicaodigittal.com/" target="_blank" rel="noopener noreferrer">Cognição Digital</a></p>
       <div class="footer-bottom-links">
         <a href="politica-de-privacidade.html">Privacidade</a>
         <a href="termos-de-uso.html">Termos de Uso</a>

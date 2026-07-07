@@ -1432,7 +1432,7 @@ input[type="file"].form-control {
   gap: 20px;
 }
 
-.footer-bottom-links a:hover {
+.footer-bottom a:hover {
   color: var(--accent-color);
 }
 
