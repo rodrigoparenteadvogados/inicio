@@ -159,8 +159,15 @@ function renderTeamCards(limit = null) {
   const list = limit ? team.slice(0, limit) : team;
   return list.map(member => {
     const hasBio = !!member.bio;
+    let width = 640;
+    let height = 480;
+    if (member.image === 'img/rodrigo.webp') { width = 640; height = 640; }
+    else if (member.image === 'img/laura.webp') { width = 639; height = 428; }
+    else if (member.image === 'img/evelin.webp') { width = 640; height = 426; }
+    else if (member.image === 'img/andreyna.webp') { width = 426; height = 639; }
+
     const imgHTML = member.image
-      ? `<img src="${member.image}" alt="${member.name}" class="member-img">`
+      ? `<img src="${member.image}" alt="${member.name}" class="member-img" width="${width}" height="${height}" loading="lazy">`
       : `<div class="member-placeholder">
           <svg viewBox="0 0 24 24">
             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>

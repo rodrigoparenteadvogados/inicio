@@ -325,16 +325,16 @@ pages.forEach(page => {
           <div class="gallery-carousel-wrapper" style="overflow: hidden; width: 100%;">
             <div class="gallery-track" style="display: flex; gap: 0; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform;">
               <div class="gallery-card">
-                <img src="img/escritorio.webp" alt="Recepção do Escritório Rodrigo Parente Advogados">
+                <img src="img/escritorio.webp" alt="Recepção do Escritório Rodrigo Parente Advogados" width="640" height="480" loading="lazy">
               </div>
               <div class="gallery-card">
-                <img src="img/escritorio2.webp" alt="Sala de Reuniões do Escritório">
+                <img src="img/escritorio2.webp" alt="Sala de Reuniões do Escritório" width="640" height="480" loading="lazy">
               </div>
               <div class="gallery-card">
-                <img src="img/escritorio3.webp" alt="Estações de Trabalho">
+                <img src="img/escritorio3.webp" alt="Estações de Trabalho" width="640" height="480" loading="lazy">
               </div>
               <div class="gallery-card">
-                <img src="img/escritorio4.webp" alt="Fachada e Identidade Visual">
+                <img src="img/escritorio4.webp" alt="Fachada e Identidade Visual" width="640" height="427" loading="lazy">
               </div>
             </div>
           </div>

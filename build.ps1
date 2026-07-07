@@ -1878,7 +1878,13 @@ function Render-TeamCards($limit = $null) {
           <span>Espaço para Foto</span>
         </div>"
     if ($null -ne $m.image) {
-      $imgHTML = "<img src='$($m.image)' alt='$($m.name)' class='member-img'>"
+      $width = 640
+      $height = 480
+      if ($m.image -eq 'img/rodrigo.webp') { $width = 640; $height = 640 }
+      elseif ($m.image -eq 'img/laura.webp') { $width = 639; $height = 428 }
+      elseif ($m.image -eq 'img/evelin.webp') { $width = 640; $height = 426 }
+      elseif ($m.image -eq 'img/andreyna.webp') { $width = 426; $height = 639 }
+      $imgHTML = "<img src='$($m.image)' alt='$($m.name)' class='member-img' width='$width' height='$height' loading='lazy'>"
     }
     $overlayHTML = ""
     $linkHTML = ""
@@ -2300,6 +2306,11 @@ function Render-Layout($page, $contentHTML) {
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://drrodrigoparente.adv.br/$($page.filename)">
   
+  <!-- Preconnect para Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>">
 
@@ -2371,7 +2382,7 @@ function Render-Layout($page, $contentHTML) {
   <header class="header">
     <div class="container navbar">
       <a href="index.html" class="logo" aria-label="Ir para a Home">
-        <img src="img/logo.webp" alt="Rodrigo Parente Advogados Especializados" class="logo-img">
+        <img src="img/logo.webp" alt="Rodrigo Parente Advogados Especializados" class="logo-img" width="638" height="151">
       </a>
       
       <nav class="nav-wrap" aria-label="Navegação Principal">
@@ -2416,7 +2427,7 @@ function Render-Layout($page, $contentHTML) {
       <div>
         <div class="footer-logo">
           <a href="index.html" class="logo">
-            <img src="img/logo.webp" alt="Rodrigo Parente Advogados Especializados" class="footer-logo-img">
+            <img src="img/logo.webp" alt="Rodrigo Parente Advogados Especializados" class="footer-logo-img" width="638" height="151" loading="lazy">
           </a>
         </div>
         <p class="footer-desc">
@@ -2745,16 +2756,16 @@ foreach ($page in $pages) {
           <div class="gallery-carousel-wrapper" style="overflow: hidden; width: 100%;">
             <div class="gallery-track" style="display: flex; gap: 0; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform;">
               <div class="gallery-card">
-                <img src="img/escritorio.webp" alt="Recepção do Escritório Rodrigo Parente Advogados">
+                <img src="img/escritorio.webp" alt="Recepção do Escritório Rodrigo Parente Advogados" width="640" height="480" loading="lazy">
               </div>
               <div class="gallery-card">
-                <img src="img/escritorio2.webp" alt="Sala de Reuniões do Escritório">
+                <img src="img/escritorio2.webp" alt="Sala de Reuniões do Escritório" width="640" height="480" loading="lazy">
               </div>
               <div class="gallery-card">
-                <img src="img/escritorio3.webp" alt="Estações de Trabalho">
+                <img src="img/escritorio3.webp" alt="Estações de Trabalho" width="640" height="480" loading="lazy">
               </div>
               <div class="gallery-card">
-                <img src="img/escritorio4.webp" alt="Fachada e Identidade Visual">
+                <img src="img/escritorio4.webp" alt="Fachada e Identidade Visual" width="640" height="427" loading="lazy">
               </div>
             </div>
           </div>
