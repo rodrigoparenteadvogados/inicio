@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
       burger.classList.toggle('toggle');
       navMenu.classList.toggle('active');
       
+      const isExpanded = navMenu.classList.contains('active');
+      burger.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      
       // Close dropdowns if menu is closed
       if (!navMenu.classList.contains('active')) {
         document.querySelectorAll('.nav-item').forEach(item => {
@@ -46,6 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const parentItem = dropdownTrigger.closest('.nav-item');
         if (parentItem) {
           parentItem.classList.toggle('dropdown-active');
+          const isDropdownActive = parentItem.classList.contains('dropdown-active');
+          dropdownTrigger.setAttribute('aria-expanded', isDropdownActive ? 'true' : 'false');
         }
       }
     });
@@ -77,11 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.faq-item').forEach(otherItem => {
         otherItem.classList.remove('active');
         otherItem.querySelector('.faq-answer').style.maxHeight = null;
+        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
       });
       
       if (!isActive) {
         item.classList.add('active');
         answer.style.maxHeight = answer.scrollHeight + 'px';
+        question.setAttribute('aria-expanded', 'true');
+      } else {
+        question.setAttribute('aria-expanded', 'false');
       }
     });
   });

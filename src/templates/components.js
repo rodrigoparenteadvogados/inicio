@@ -7,7 +7,7 @@ function renderBreadcrumbs(breadcrumbs) {
   const itemsHTML = breadcrumbs.map((crumb, idx) => {
     const isLast = idx === breadcrumbs.length - 1;
     if (isLast) {
-      return `<span class="current">${crumb.label}</span>`;
+      return `<span class="current" aria-current="page">${crumb.label}</span>`;
     }
     return `<a href="${crumb.href}">${crumb.label}</a> <span class="separator">/</span>`;
   }).join(' ');
@@ -241,7 +241,7 @@ function renderFAQ(duvidas) {
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         ${d.q}
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M7 10l5 5 5-5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M7 10l5 5 5-5z"/></svg>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
@@ -257,7 +257,7 @@ function renderDemandas(demandas) {
   if (!demandas || demandas.length === 0) return '';
   return demandas.map(dem => `
     <div class="demanda-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
       <span>${dem}</span>
     </div>
   `).join('');

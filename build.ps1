@@ -1722,7 +1722,7 @@ function Render-Breadcrumbs($crumbs) {
   for ($i = 0; $i -lt $crumbs.Count; $i++) {
     $c = $crumbs[$i]
     if ($i -eq ($crumbs.Count - 1)) {
-      $html += "<span class='current'>$($c.label)</span>"
+      $html += "<span class='current' aria-current='page'>$($c.label)</span>"
     } else {
       $html += "<a href='$($c.href)'>$($c.label)</a> <span class='separator'>/</span> "
     }
@@ -1969,7 +1969,7 @@ function Render-FAQ($duvidasList) {
     <div class="faq-item">
       <button class="faq-question" aria-expanded="false">
         $($d.q)
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20"><path d="M7 10l5 5 5-5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M7 10l5 5 5-5z"/></svg>
       </button>
       <div class="faq-answer">
         <div class="faq-answer-inner">
@@ -1988,7 +1988,7 @@ function Render-Demandas($demandasList) {
   foreach ($d in $demandasList) {
     $html += @"
     <div class="demanda-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
       <span>$d</span>
     </div>
 "@
@@ -2393,9 +2393,9 @@ function Render-Layout($page, $contentHTML) {
           <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="o-escritorio.html" class="nav-link">O Escritório</a></li>
           <li class="nav-item dropdown">
-            <a href="areas-de-atuacao.html" class="nav-link dropdown-trigger">
+            <a href="areas-de-atuacao.html" class="nav-link dropdown-trigger" aria-haspopup="true" aria-expanded="false">
               Áreas de Atuação
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M7 10l5 5 5-5z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M7 10l5 5 5-5z"/></svg>
             </a>
             <ul class="dropdown-menu">
               $dropdownHTML
@@ -2473,21 +2473,21 @@ function Render-Layout($page, $contentHTML) {
       <div>
         <h4 class="footer-title">Nossas Unidades</h4>
         <div class="footer-contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           <div class="footer-contact-text">
             <strong>Unidade Sobral</strong>
             <span>Rua Tabelião Idelfonso Cavalcante, nº 102, Centro, Sobral/CE</span>
           </div>
         </div>
         <div class="footer-contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
           <div class="footer-contact-text">
             <strong>Unidade Fortaleza</strong>
             <span>Torre Empresarial Iguatemi, Sala 307, 3º andar, Avenida Washington Soares, Fortaleza/CE</span>
           </div>
         </div>
         <div class="footer-contact-item">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
           <div class="footer-contact-text">
             <strong>Contatos e E-mail</strong>
             <span>Fixo: (85) 3104-2419</span><br>
