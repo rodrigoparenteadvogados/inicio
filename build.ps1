@@ -1857,8 +1857,8 @@ function Render-TeamCards($limit = $null) {
       '
     },
     @{ name = "Dr. Paiva Oliveira"; role = "Assistente Jurídico"; oab = "Graduando em Direito" },
-    @{ name = "Dra. Ketyllem Vasconcelos"; role = "Advogada Associada"; oab = ""; image = "img/ketyllem.webp" },
-    @{ name = "Dra. Ana Laura Braz de Oliveira"; role = "Especializada em Transações Imobiliárias"; oab = ""; image = "img/andreyna.webp" }
+    @{ name = "Dra. Ana Laura Braz de Oliveira"; role = "Especializada em Transações Imobiliárias"; oab = ""; image = "img/andreyna.webp" },
+    @{ name = "Dra. Ketyllem Vasconcelos"; role = "Advogada Associada"; oab = ""; image = "img/ketyllem.webp" }
   )
   
   $html = ""

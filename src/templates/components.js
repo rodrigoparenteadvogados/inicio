@@ -148,18 +148,18 @@ function renderTeamCards(limit = null) {
       isStudent: true
     },
     {
-      name: "Dra. Ketyllem Vasconcelos",
-      role: "Advogada Associada",
-      oab: "",
-      isStudent: false,
-      image: "img/ketyllem.webp"
-    },
-    {
       name: "Dra. Ana Laura Braz de Oliveira",
       role: "Especializada em Transações Imobiliárias",
       oab: "",
       isStudent: false,
       image: "img/andreyna.webp"
+    },
+    {
+      name: "Dra. Ketyllem Vasconcelos",
+      role: "Advogada Associada",
+      oab: "",
+      isStudent: false,
+      image: "img/ketyllem.webp"
     }
   ];
 
