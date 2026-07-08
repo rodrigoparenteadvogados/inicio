@@ -1882,7 +1882,7 @@ function Render-TeamCards($limit = $null) {
       $height = 480
       if ($m.image -eq 'img/rodrigo.webp') { $width = 640; $height = 640 }
       elseif ($m.image -eq 'img/laura.webp') { $width = 639; $height = 428 }
-      elseif ($m.image -eq 'img/evelin.webp') { $width = 640; $height = 426 }
+      elseif ($m.image -eq 'img/evelin.webp') { $width = 1283; $height = 1283 }
       elseif ($m.image -eq 'img/andreyna.webp') { $width = 426; $height = 639 }
       $imgHTML = "<img src='$($m.image)' alt='$($m.name)' class='member-img' width='$width' height='$height' loading='lazy'>"
     }

@@ -163,7 +163,7 @@ function renderTeamCards(limit = null) {
     let height = 480;
     if (member.image === 'img/rodrigo.webp') { width = 640; height = 640; }
     else if (member.image === 'img/laura.webp') { width = 639; height = 428; }
-    else if (member.image === 'img/evelin.webp') { width = 640; height = 426; }
+    else if (member.image === 'img/evelin.webp') { width = 1283; height = 1283; }
     else if (member.image === 'img/andreyna.webp') { width = 426; height = 639; }
 
     const imgHTML = member.image
