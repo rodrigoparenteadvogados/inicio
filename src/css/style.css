@@ -595,52 +595,8 @@ p {
   color: var(--text-light);
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  align-items: center;
-  gap: 80px;
-  width: 100%;
-}
-
 .hero-content {
-  max-width: 100%;
-}
-
-.hero-image-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-side-img {
-  width: 100%;
-  max-width: 460px;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease, border-color 0.6s ease;
-  animation: heroFloat 5s ease-in-out infinite;
-}
-
-.hero-side-img:hover {
-  animation-play-state: paused;
-  transform: translateY(-15px) scale(1.03);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-  border-color: rgba(212, 175, 55, 0.4);
-}
-
-@keyframes heroFloat {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+  max-width: 780px;
 }
 
 .hero-tagline {
@@ -654,7 +610,7 @@ p {
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-size: 3.2rem;
   color: var(--text-light);
   line-height: 1.25;
   margin-bottom: 1.5rem;
@@ -983,19 +939,6 @@ p {
 @media (max-width: 992px) {
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .hero-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 40px;
-  }
-  .hero-content {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-  }
-  .hero-side-img {
-    max-width: 320px;
   }
 }
 
