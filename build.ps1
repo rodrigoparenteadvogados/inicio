@@ -1857,6 +1857,7 @@ function Render-TeamCards($limit = $null) {
       '
     },
     @{ name = "Dr. Paiva Oliveira"; role = "Assistente Jurídico"; oab = "Graduando em Direito" },
+    @{ name = "Dra. Ketyllem Vasconcelos"; role = "Advogada Associada"; oab = ""; image = "img/ketyllem.webp" },
     @{ name = "Dra. Ana Laura Braz de Oliveira"; role = "Especializada em Transações Imobiliárias"; oab = ""; image = "img/andreyna.webp" }
   )
   
@@ -1884,6 +1885,7 @@ function Render-TeamCards($limit = $null) {
       elseif ($m.image -eq 'img/laura.webp') { $width = 639; $height = 428 }
       elseif ($m.image -eq 'img/evelin.webp') { $width = 1283; $height = 1283 }
       elseif ($m.image -eq 'img/andreyna.webp') { $width = 426; $height = 639 }
+      elseif ($m.image -eq 'img/ketyllem.webp') { $width = 1161; $height = 913 }
       $imgHTML = "<img src='$($m.image)' alt='$($m.name)' class='member-img' width='$width' height='$height' loading='lazy'>"
     }
     $overlayHTML = ""

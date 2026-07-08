@@ -148,6 +148,13 @@ function renderTeamCards(limit = null) {
       isStudent: true
     },
     {
+      name: "Dra. Ketyllem Vasconcelos",
+      role: "Advogada Associada",
+      oab: "",
+      isStudent: false,
+      image: "img/ketyllem.webp"
+    },
+    {
       name: "Dra. Ana Laura Braz de Oliveira",
       role: "Especializada em Transações Imobiliárias",
       oab: "",
@@ -165,6 +172,7 @@ function renderTeamCards(limit = null) {
     else if (member.image === 'img/laura.webp') { width = 639; height = 428; }
     else if (member.image === 'img/evelin.webp') { width = 1283; height = 1283; }
     else if (member.image === 'img/andreyna.webp') { width = 426; height = 639; }
+    else if (member.image === 'img/ketyllem.webp') { width = 1161; height = 913; }
 
     const imgHTML = member.image
       ? `<img src="${member.image}" alt="${member.name}" class="member-img" width="${width}" height="${height}" loading="lazy">`
