@@ -1836,29 +1836,46 @@ function Render-TeamCards($limit = $null) {
       '
     },
     @{
-      name = "Dr. Johnathan Marques"
+      name = "Dr. Jhonatan Marques"
       role = "Corpo Jurídico"
       oab = "Economista & Graduando em Direito"
+      image = "img/johnatan.webp"
       bio = '
-        <h3 class="bio-title">Dr. Johnathan Marques</h3>
+        <h3 class="bio-title">Dr. Jhonatan Marques</h3>
         <p class="bio-subtitle">Corpo Jurídico / Economista</p>
         <div class="bio-text">
-          <p>Economista formado pela Universidade Federal do Ceará UFC e Graduando em Direito pelo Centro Universitário Uninta Ceará. Responsável pelo processo de Superendividamento.</p>
-          
+          <p>Economista formado pela Universidade Federal do Ceará e Graduando em Direito. Especialista na análise de juros abusivos e defesa contratual de pessoas físicas, servidores públicos e empresários.</p>
           <ul class="bio-highlights">
-            <li><span>🌐</span> Estudos aprofundados em avaliação de juros Abusivos e empréstimos consignados</li>
-            <li><span>🌐</span> Estudos aprofundados na avaliação do comportamento dos Bancos sobre Taxas de Juros</li>
-            <li><span>🌐</span> Mentor de Jovens Economistas, Advogados e Estagiários</li>
-            <li><span>🌐</span> Estudioso no Âmbito do Direito Constitucional, Direito Empresarial, Direito do Consumidor, Direito Societário, Criminal e Bancário</li>
-            <li><span>🌐</span> Estudioso do processo de aperfeiçoamento para Defesa de Empresas e Empresários no processo de repactuação de Dívidas</li>
-            <li><span>🌐</span> Experiência profissional competente e preparada</li>
+            <li><span>🌐</span> Economista graduado pela UFC com vasta experiência em análise de juros e avaliação de contratos bancários complexos</li>
+            <li><span>🌐</span> Estudos aprofundados em Juros Bancários, Práticas Abusivas dos Bancos e o processo de Superendividamento</li>
+            <li><span>🌐</span> Avaliação de juros abusivos em empréstimos bancários e contratos de empresas e empresários</li>
+            <li><span>🌐</span> Estudo sobre os impactos do juros abusivos na vida dos Servidores Públicos Concursados</li>
+            <li><span>🌐</span> Graduando em Direito com estudos aprofundados sobre Direito Constitucional e Direito Bancário</li>
           </ul>
         </div>
       '
     },
-    @{ name = "Dr. Paiva Oliveira"; role = "Assistente Jurídico"; oab = "Graduando em Direito" },
-    @{ name = "Dra. Ana Laura Braz de Oliveira"; role = "Especializada em Transações Imobiliárias"; oab = ""; image = "img/andreyna.webp" },
-    @{ name = "Dra. Ketyllem Vasconcelos"; role = "Advogada Associada"; oab = ""; image = "img/ketyllem.webp" }
+    @{
+      name = "Dra. Ketyllem Vasconcelos"
+      role = "Advogada Associada"
+      oab = "Graduanda em Direito"
+      image = "img/ketyllem.webp"
+      bio = '
+        <h3 class="bio-title">Dra. Ketyllem Vasconcelos</h3>
+        <p class="bio-subtitle">Equipe do Escritório / Graduanda em Direito</p>
+        <div class="bio-text">
+          <p>Graduanda em Direito com foco em estudos regulatórios, direito contratual e bancário.</p>
+          <ul class="bio-highlights">
+            <li><span>🌐</span> Experiência em avaliação de Contratos de Financiamento de Veículos e Financiamento Habitacional</li>
+            <li><span>🌐</span> Avaliação preliminar de contratos de Financiamento de Veículos e Financiamento Habitacional</li>
+            <li><span>🌐</span> Análise de juros em Empréstimos Consignados e Empréstimos Pessoais</li>
+            <li><span>🌐</span> Estudos avançados em Direito Bancário, Direito Constitucional, Direito Civil e Direito Tributário</li>
+            <li><span>🌐</span> Profissional em constante processo de aperfeiçoamento</li>
+          </ul>
+        </div>
+      '
+    },
+    @{ name = "Dra. Ana Laura Braz de Oliveira"; role = "Especializada em Transações Imobiliárias"; oab = ""; image = "img/andreyna.webp" }
   )
   
   $html = ""
@@ -1886,6 +1903,7 @@ function Render-TeamCards($limit = $null) {
       elseif ($m.image -eq 'img/evelin.webp') { $width = 1283; $height = 1283 }
       elseif ($m.image -eq 'img/andreyna.webp') { $width = 426; $height = 639 }
       elseif ($m.image -eq 'img/ketyllem.webp') { $width = 1161; $height = 913 }
+      elseif ($m.image -eq 'img/johnatan.webp') { $width = 1200; $height = 1285 }
       $imgHTML = "<img src='$($m.image)' alt='$($m.name)' class='member-img' width='$width' height='$height' loading='lazy'>"
     }
     $overlayHTML = ""
