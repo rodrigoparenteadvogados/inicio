@@ -621,12 +621,26 @@ p {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease, border-color 0.6s ease;
+  animation: heroFloat 5s ease-in-out infinite;
 }
 
 .hero-side-img:hover {
-  transform: translateY(-10px) scale(1.03);
+  animation-play-state: paused;
+  transform: translateY(-15px) scale(1.03);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
   border-color: rgba(212, 175, 55, 0.4);
+}
+
+@keyframes heroFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .hero-tagline {
