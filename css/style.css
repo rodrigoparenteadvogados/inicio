@@ -597,9 +597,9 @@ p {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
-  gap: 48px;
+  gap: 80px;
   width: 100%;
 }
 
@@ -615,11 +615,18 @@ p {
 
 .hero-side-img {
   width: 100%;
-  max-width: 420px;
+  max-width: 460px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease, border-color 0.6s ease;
+}
+
+.hero-side-img:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  border-color: rgba(212, 175, 55, 0.4);
 }
 
 .hero-tagline {
