@@ -597,7 +597,7 @@ p {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
   gap: 80px;
   width: 100%;
@@ -654,7 +654,7 @@ p {
 }
 
 .hero h1 {
-  font-size: 3.2rem;
+  font-size: clamp(2rem, 3.6vw, 3rem);
   color: var(--text-light);
   line-height: 1.25;
   margin-bottom: 1.5rem;
