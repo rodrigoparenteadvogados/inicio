@@ -791,6 +791,12 @@ p {
   gap: 32px;
 }
 
+@media (min-width: 993px) {
+  .team-grid > .member-card:last-child:nth-child(3n + 1) {
+    grid-column: 2;
+  }
+}
+
 .member-card {
   background-color: var(--bg-light);
   border: 1px solid var(--border-color);
