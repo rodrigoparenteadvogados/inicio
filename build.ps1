@@ -1875,7 +1875,25 @@ function Render-TeamCards($limit = $null) {
         </div>
       '
     },
-    @{ name = "Dra. Ana Laura Braz de Oliveira"; role = "Especializada em Transações Imobiliárias"; oab = ""; image = "img/andreyna.webp" }
+    @{
+      name = "Dra. Ana Laura Braz de Oliveira"
+      role = "Especializada em Transações Imobiliárias"
+      oab = ""
+      image = "img/andreyna.webp"
+      bio = '
+        <h3 class="bio-title">Dra. Ana Laura Braz de Oliveira</h3>
+        <p class="bio-subtitle">Especializada em Transações Imobiliárias</p>
+        <div class="bio-text">
+          <p>Profissional especializada em direito imobiliário, contratos e negociações bancárias.</p>
+          <ul class="bio-highlights">
+            <li><span>🌐</span> Amplo conhecimento em avaliações e análise de contratos de Financiamento Habitacional</li>
+            <li><span>🌐</span> Avaliação de Taxas de Juros, Encargos Bancários e viabilidade de Negociações Bancárias</li>
+            <li><span>🌐</span> Avaliação de viabilidade de compra e venda de Imóveis com foco em Transações Imobiliárias Seguras</li>
+            <li><span>🌐</span> Construção de contratos imobiliários personalizados e verificação detalhada de cláusulas de Financiamento</li>
+          </ul>
+        </div>
+      '
+    }
   )
   
   $html = ""
