@@ -1839,7 +1839,7 @@ function Render-TeamCards($limit = $null) {
       name = "Dr. Jhonatan Marques"
       role = "Corpo Jurídico"
       oab = "Economista & Graduando em Direito"
-      image = "img/johnatan.webp"
+      image = "img/johnatan.jpg"
       bio = '
         <h3 class="bio-title">Dr. Jhonatan Marques</h3>
         <p class="bio-subtitle">Corpo Jurídico / Economista</p>
@@ -1916,12 +1916,12 @@ function Render-TeamCards($limit = $null) {
     if ($null -ne $m.image) {
       $width = 640
       $height = 480
-      if ($m.image -eq 'img/rodrigo.webp') { $width = 640; $height = 640 }
+      if ($m.image -eq 'img/rodrigo.webp') { $width = 1254; $height = 1254 }
       elseif ($m.image -eq 'img/laura.webp') { $width = 639; $height = 428 }
       elseif ($m.image -eq 'img/evelin.webp') { $width = 1283; $height = 1283 }
       elseif ($m.image -eq 'img/andreyna.webp') { $width = 426; $height = 639 }
       elseif ($m.image -eq 'img/ketyllem.webp') { $width = 1161; $height = 913 }
-      elseif ($m.image -eq 'img/johnatan.webp') { $width = 1200; $height = 1285 }
+      elseif ($m.image -eq 'img/johnatan.jpg') { $width = 1086; $height = 1448 }
       $imgHTML = "<img src='$($m.image)' alt='$($m.name)' class='member-img' width='$width' height='$height' loading='lazy'>"
     }
     $overlayHTML = ""
