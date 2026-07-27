@@ -124,7 +124,7 @@ function renderTeamCards(limit = null) {
       role: "Corpo Jurídico",
       oab: "Economista & Graduando em Direito",
       isStudent: false,
-      image: "img/johnatan.jpg",
+      image: "img/johnatan.webp",
       bio: `
         <h3 class="bio-title">Dr. Jhonatan Marques</h3>
         <p class="bio-subtitle">Corpo Jurídico / Economista</p>
@@ -193,7 +193,7 @@ function renderTeamCards(limit = null) {
     else if (member.image === 'img/evelin.webp') { width = 1283; height = 1283; }
     else if (member.image === 'img/andreyna.webp') { width = 426; height = 639; }
     else if (member.image === 'img/ketyllem.webp') { width = 1161; height = 913; }
-    else if (member.image === 'img/johnatan.jpg') { width = 1086; height = 1448; }
+    else if (member.image === 'img/johnatan.webp') { width = 1086; height = 1448; }
 
     const imgHTML = member.image
       ? `<img src="${member.image}" alt="${member.name}" class="member-img" width="${width}" height="${height}" loading="lazy">`

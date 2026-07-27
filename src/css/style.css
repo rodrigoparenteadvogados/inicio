@@ -828,6 +828,10 @@ p {
   transition: var(--transition-normal);
 }
 
+.member-card img[src*="johnatan"] {
+  object-position: center 15%;
+}
+
 .member-bio-overlay {
   position: absolute;
   top: 0;
