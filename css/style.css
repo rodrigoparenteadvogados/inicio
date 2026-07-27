@@ -860,18 +860,21 @@ p {
 }
 
 .member-bio-link {
-  display: inline-block;
-  margin-top: 12px;
+  display: block;
+  width: 120px;
+  margin: 12px auto 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color);
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--accent-color);
   transition: var(--transition-fast);
-  border-bottom: 1px solid transparent;
+  text-align: center;
 }
 
 .member-card:hover .member-bio-link {
   color: var(--accent-hover);
-  border-bottom-color: var(--accent-hover);
+  border-top-color: var(--accent-hover);
 }
 
 .member-placeholder {
@@ -934,10 +937,8 @@ p {
   font-size: 0.8rem;
   color: var(--text-muted);
   font-weight: 500;
-  border-top: 1px solid var(--border-color);
-  padding-top: 8px;
-  display: inline-block;
-  min-width: 120px;
+  display: block;
+  margin-top: 8px;
 }
 
 @media (max-width: 992px) {
