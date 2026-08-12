@@ -100,21 +100,21 @@ function renderTeamCards(limit = null) {
       `
     },
     {
-      name: "Dra. Evelin Rodrigues",
+      name: "Dra. Luelen Kathleen Almada Cavalcante",
       role: "Advogada Associada",
-      oab: "OAB/CE 54.390",
+      oab: "OAB/CE 57.409",
       isStudent: false,
-      image: "img/evelin.webp",
+      image: "img/luelen.webp",
       bio: `
-        <h3 class="bio-title">Dra. Evelin Rodrigues</h3>
-        <p class="bio-subtitle">Equipe do Escritório</p>
+        <h3 class="bio-title">Dra. Luelen Cavalcante</h3>
+        <p class="bio-subtitle">Advogada Associada / OAB/CE 57.409</p>
         <div class="bio-text">
-          <p>Advogada com vasta Experiência Jurídica.</p>
-          <p>Com diversas Especializações.</p>
+          <p>Advogada associada especializada em Direito Bancário, com estudos aprofundados e ampla experiência prática em revisão contratual e análise de juros abusivos.</p>
           <ul class="bio-highlights">
-            <li><span>🌐</span> Profissional extremamente competente e preparada</li>
-            <li><span>🌐</span> Presente nos principais simpósios jurídicos</li>
-            <li><span>🌐</span> Escritora de Artigos Jurídicos</li>
+            <li><span>🌐</span> Estudos aprofundados em Direito Bancário e vasta experiência acadêmica sobre juros abusivos</li>
+            <li><span>🌐</span> Ampla experiência em estudos jurídicos sobre Revisão de Juros em Financiamento de Veículos e Financiamento Habitacional</li>
+            <li><span>🌐</span> Análise especializada de Juros em Empréstimos Consignados e Empréstimos Pessoais com garantia</li>
+            <li><span>🌐</span> Profissional altamente capacitada e preparada para atuar na defesa dos interesses dos clientes</li>
           </ul>
         </div>
       `
@@ -190,7 +190,7 @@ function renderTeamCards(limit = null) {
     let height = 480;
     if (member.image === 'img/rodrigo.webp') { width = 1254; height = 1254; }
     else if (member.image === 'img/laura.webp') { width = 639; height = 428; }
-    else if (member.image === 'img/evelin.webp') { width = 1283; height = 1283; }
+    else if (member.image === 'img/luelen.webp') { width = 896; height = 1195; }
     else if (member.image === 'img/andreyna.webp') { width = 426; height = 639; }
     else if (member.image === 'img/ketyllem.webp') { width = 1161; height = 913; }
     else if (member.image === 'img/johnatan.webp') { width = 1086; height = 1448; }
